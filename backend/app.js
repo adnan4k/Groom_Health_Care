@@ -1,10 +1,12 @@
 import mongoose from "mongoose"
 import express from "express"
+import cors from "cors"
 import multer from "multer"
 import NewsRoutes from "./routes/NewsRoute.js"
 import ServiceRoutes from "./routes/ServiceRoute.js"
 import StaffRoutes from "./routes/StaffRoute.js"
 import TestimonyRoutes from "./routes/TestimonyRoute.js"
+
 
 
 
@@ -22,6 +24,7 @@ const storage = multer.diskStorage({
   const upload = multer({storage:storage})
   
   const app = express();
+  app.use(cors());
   app.use(express.json());
 //   app.use(express.urlencoded({extended:true}));
   app.use('/images',express.static('images'))
