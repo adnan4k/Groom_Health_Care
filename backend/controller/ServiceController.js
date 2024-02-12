@@ -59,7 +59,7 @@ return res.status(200).json({message:"updated service",service})
 export const allService = async(req,res) =>{
     let service;
     try {
-       Service = await Service.find()
+       service = await Service.find()
     } catch (error) {
         return res.status(500).json({message:"server error"})
     }
