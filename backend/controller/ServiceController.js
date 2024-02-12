@@ -6,7 +6,7 @@ export const createService = async (req,res)=>{
         image,
         description,
     } = req.body;
-    
+    // console.log(title,image,description)
     try {
 const service = new Service ({
             title:title,

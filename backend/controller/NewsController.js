@@ -14,6 +14,7 @@ export const createNews = async (req,res)=>{
             content:content,
 
         })
+
         const savednews = await news.save();
 
         if (!savednews) {

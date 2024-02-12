@@ -38,26 +38,27 @@ function News({ news, onFormSubmit }) {
     e.preventDefault();
   
     // Use FormData to handle file upload
-    const data = new FormData();
-    data.append('title', formData.title);
-    data.append('content', formData.content);
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
+    // const data = new FormData();
+    // data.append('title', formData.title);
+    // data.append('content', formData.content);
+    // if (formData.image) {
+    //   data.append('image', formData.image);
+    // }
   
     try {
-      const response = await axios.post('http://localhost:4000/news/create-news', data, {
+      const response = await axios.post('http://localhost:4000/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log(formData)
       console.log("Form submission response:", response.data);
   
       // Clear the form here by resetting formData state
       setFormData({
         title: '',
         content: '',
-        image: null,
+        image: '',
       });
   
       if (onFormSubmit) {

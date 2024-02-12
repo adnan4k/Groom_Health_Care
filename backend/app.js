@@ -11,15 +11,13 @@ import TestimonyRoutes from "./routes/TestimonyRoute.js"
 
 
 const storage = multer.diskStorage({
-    destination:(req,res,cb)=>{
-         cb(null,'images')
-    },
-    filename:(req,file,cb)=>{
-      // console.log(file,'this is file')
-      cb(null,path.extname(file.originalname))
-      console.log(path.extname(file.originalname),'file name')
-    }
-  })
+  destination: function (req, file, cb) {
+      cb(null, './images');
+  },
+  filename: function (req, file, cb) {
+      cb(null, Date.now() + "--" + file.originalname);
+  }
+});  
   
   const upload = multer({storage:storage})
   
@@ -30,10 +28,10 @@ const storage = multer.diskStorage({
   app.use('/images',express.static('images'))
 
 //routes
-  app.use('/news',NewsRoutes)
-  app.use('/service',ServiceRoutes)
-  app.use('/staff',StaffRoutes)
-  app.use('/testimony',TestimonyRoutes)
+  app.use('/news',upload.single('image'),NewsRoutes)
+  app.use('/service',upload.single('image'),ServiceRoutes)
+  app.use('/staff',upload.single('image'),StaffRoutes)
+  app.use('/testimony',upload.single('image'),TestimonyRoutes)
 
 mongoose.connect("mongodb://127.0.0.1:27017/groom_health_care")
   .then(() => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Staff({ staff, onFormSubmit }) {
   const [formData, setFormData] = useState({
@@ -28,17 +29,42 @@ function Staff({ staff, onFormSubmit }) {
   };
 
   const handleFileChange = (e) => {
-    // For handling file inputs, you would typically manage files directly from the event
-    // This is a placeholder for actual implementation
-    console.log("File input changed", e.target.files);
-    // Set file to state or handle file upload directly
+    if (e.target.files[0]) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        image: e.target.files[0],
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Here you would typically call onFormSubmit and pass the formData
-    // onFormSubmit(formData);
+  
+    try {
+      // console.log(data)
+      const response = await axios.post('http://localhost:4000/staff/create-staff', formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+  
+      // Clear the form here by resetting formData state
+      setFormData({
+        title: '',
+        description: '',
+        image:'',
+        name:'',
+        experience:''
+      });
+  
+      if (onFormSubmit) {
+        onFormSubmit(response.data);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (

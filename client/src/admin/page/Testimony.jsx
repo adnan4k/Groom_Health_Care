@@ -1,8 +1,11 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 function Testimony({ testimony, onFormSubmit }) {
   const [formData, setFormData] = useState({
     name: testimony ? testimony.name : '',
+    title:testimony ? testimony.title : '',
+    experience:testimony ? testimony.experience : 0,
     description: testimony ? testimony.description : '',
     // Assuming image handling will be implemented separately
     image: '',
@@ -14,6 +17,8 @@ function Testimony({ testimony, onFormSubmit }) {
       setFormData({
         name: testimony.name,
         description: testimony.description,
+        title: testimony.title ,
+        experience:testimony.experience,
       });
     }
   }, [testimony]);
@@ -24,14 +29,41 @@ function Testimony({ testimony, onFormSubmit }) {
   };
 
   const handleFileChange = (e) => {
-   
-    console.log("File input changed", e.target.files);
+    // Set file to formData state
+    if (e.target.files[0]) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        image: e.target.files[0],
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-   
+  
+    try {
+      // console.log(data)
+      const response = await axios.post('http://localhost:4000/testimony/create-testimony', formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+  
+      // Clear the form here by resetting formData state
+      setFormData({
+        title: '',
+        description: '',
+        image:'',
+      });
+  
+      if (onFormSubmit) {
+        onFormSubmit(response.data);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (

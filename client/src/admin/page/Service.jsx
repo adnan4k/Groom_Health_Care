@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import axios  from 'axios';
 
 function Service({ service, onFormSubmit }) {
   const [formData, setFormData] = useState({
     title: service ? service.title : '',
     description: service ? service.description : '',
-    // Assuming image handling will be implemented separately
     image: '',
   });
 
   useEffect(() => {
-    // Update local state if service prop changes, for example when editing
     if (service) {
       setFormData({
         title: service.title,
@@ -21,22 +20,51 @@ function Service({ service, onFormSubmit }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    console.log(formData,"from handle change")
+
   };
 
+  
   const handleFileChange = (e) => {
-   
-    console.log("File input changed", e.target.files);
+    if (e.target.files[0]) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        image: e.target.files[0],
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-   
+  
+    try {
+      // console.log(data)
+      const response = await axios.post('http://localhost:4000/service/create-service', formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+  
+      // Clear the form here by resetting formData state
+      setFormData({
+        title: '',
+        description: '',
+        image:'',
+      });
+  
+      if (onFormSubmit) {
+        onFormSubmit(response.data);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
-      <div className="mb-5">
+      <div className="my-5">
         <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Service
         </h1>
