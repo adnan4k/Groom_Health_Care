@@ -1,9 +1,12 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from '../component/NavBar';
 
 function Layout({ children }) {
   return (
+   <div>
+      <NavBar/>
     <div className='flex'>
        <aside id="separator-sidebar" class=" top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -67,6 +70,7 @@ function Layout({ children }) {
       <main className="flex justify-center item-center"> 
         {children} 
       </main>
+    </div>
     </div>
   );
 }
