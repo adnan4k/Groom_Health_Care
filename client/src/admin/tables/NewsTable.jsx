@@ -25,8 +25,9 @@ function NewsTables() {
       render: (row) => <img src={row.image} alt={row.title} style={{ width: '50px' }} /> 
     },
   ];
+  const type = "news"
 
-  return <Table columns={columns} rows={data} />;
+  return <Table columns={columns} initialRows={data}  type={type} />;
 }
 
 export default NewsTables;

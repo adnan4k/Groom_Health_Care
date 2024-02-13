@@ -27,8 +27,8 @@ function StaffTable() {
       render: (row) => <img src={row.image} alt={row.title} style={{ width: '50px' }} /> 
     },
   ];
-
-  return <Table columns={columns} rows={data} />;
+      const type = "staff"
+  return <Table columns={columns} initialRows={data} type={type}/>;
 }
 
 export default StaffTable;

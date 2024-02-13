@@ -1,7 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
 import Layout from '../layout/Layout';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import axios from 'axios';
 
-function Table({ columns, rows }) {
+function Table({ columns, initialRows,type }) {
+  const [rows, setRows] = useState(initialRows);
+
+  const handleDelete = async(id,type) =>{
+      try {
+        const response = await axios.delete(`http://localhost:4000/${type}/delete-${type}/${id}`);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching service data:", error);
+      }
+     
+
+  }
   return (
     <Layout>
       <div className="relative overflow-x-auto w-full h-full">
@@ -19,7 +35,7 @@ function Table({ columns, rows }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, rowIndex) => (
+            {initialRows.map((row, rowIndex) => (
               <tr key={rowIndex} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 {columns.map((column) => (
                   <td key={column.key} className="px-6 sm:px-16 py-4">
@@ -28,8 +44,14 @@ function Table({ columns, rows }) {
                 ))}
                 <td className="px-6 sm:px-16 py-4 text-right">
                   {/* Example of actions you might have */}
-                  <button className="text-blue-500 hover:text-blue-700">Edit</button>
-                  <button className="text-red-500 hover:text-red-700 ml-2">Delete</button>
+                  <form action="">
+                  <button type='submit' onClick={() => handleDelete(row._id, type)} className="text-blue-500 hover:text-blue-700">
+                    <DeleteIcon />
+                  </button>
+                  <button type='submit'  className="text-red-500 hover:text-red-700 ml-2">
+                  <EditIcon />
+                  </button>
+                  </form>
                 </td>
               </tr>
             ))}
