@@ -1,23 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { useLocation,useNavigate } from 'react-router-dom';
 
-function News({ news, onFormSubmit }) {
+function News() {
+  //accessing passed data
+  const navigate = useNavigate()
+  const location = useLocation();
+  const {row} = location.state || ''
+  
   const [formData, setFormData] = useState({
-    title: news ? news.title : '',
-    content: news ? news.content : '',
-    image: null, // Initialize image as null since it's going to be a File object
+    title: row ? row[0].title : '',
+    content: row ? row[0].content : '',
+    image: null, 
   });
-
   useEffect(() => {
-    // Update form data when `news` prop changes
-    if (news) {
+    // Update form data when `row` prop changes
+    if (row) {
       setFormData({
-        title: news.title,
-        content: news.content,
-        image: null, // Keep image as null when news prop updates
+        title: row[0].title,
+        content: row[0].content,
+        image: null, 
       });
     }
-  }, [news]);
+  }, [row]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,23 +41,15 @@ function News({ news, onFormSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Use FormData to handle file upload
-    // const data = new FormData();
-    // data.append('title', formData.title);
-    // data.append('content', formData.content);
-    // if (formData.image) {
-    //   data.append('image', formData.image);
-    // }
-  
     try {
       const response = await axios.post('http://localhost:4000/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(formData)
       console.log("Form submission response:", response.data);
+      navigate('/admin/news/display');
+
   
       // Clear the form here by resetting formData state
       setFormData({
@@ -61,9 +58,20 @@ function News({ news, onFormSubmit }) {
         image: '',
       });
   
-      if (onFormSubmit) {
-        onFormSubmit(response.data);
-      }
+      if (row) {
+        try {
+          const response = await axios.post(`http://localhost:4000/news/edit-news/${row[0]._d}`, formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+      navigate('/admin/news/display');
+
+        } catch (error) {
+          console.log(error)
+        }      }
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -112,7 +120,7 @@ function News({ news, onFormSubmit }) {
   type="submit"
   className="py-2 px-4 bg-blue-500 text-black hover:text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 w-full transition-colors duration-200"
 >
-  {news ? 'Update News' : 'Create News'}
+  {row ? 'Update row' : 'Create row'}
 </button>
 
     </form>

@@ -18,7 +18,7 @@ function NewsTables() {
 
   const columns = [
     { key: 'title', label: 'Title' },
-    { key: 'description', label: 'Description' },
+    { key: 'content', label: 'Content' },
     { 
       key: 'image', 
       label: 'Image', 

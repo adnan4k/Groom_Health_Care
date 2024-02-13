@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useLocation,useNavigate } from 'react-router-dom';
 
-function Staff({ staff, onFormSubmit }) {
+
+function Staff() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {row} = location.state || ''
   const [formData, setFormData] = useState({
-    title: staff ? staff.title : '',
-    name: staff ? staff.name : '',
-    experience: staff ? staff.experience : '',
-    description: staff ? staff.description : '',
+    title: row ? row[0].title : '',
+    name: row ? row[0].name : '',
+    experience: row ? row[0].experience : '',
+    description: row ? row[0].description : '',
     // Assuming image handling will be implemented separately
     image: '',
   });
 
   useEffect(() => {
-    // Update local state if staff prop changes, for example when editing
-    if (staff) {
+    // Update local state if row prop changes, for example when editing
+    if (row) {
       setFormData({
-        title: staff.title,
-        name: staff.name,
-        experience: staff.experience,
-        description: staff.description,
+        title: row[0].title,
+        name: row[0].name,
+        experience: row[0].experience,
+        description: row[0].description,
       });
     }
-  }, [staff]);
+  }, [row]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +54,8 @@ function Staff({ staff, onFormSubmit }) {
 
       });
       console.log("Form submission response:", response.data);
-  
+      navigate('/admin/staff/display');
+
       // Clear the form here by resetting formData state
       setFormData({
         title: '',
@@ -59,13 +65,27 @@ function Staff({ staff, onFormSubmit }) {
         experience:''
       });
   
-      if (onFormSubmit) {
-        onFormSubmit(response.data);
+      if (row) {
+        try {
+          const response = await axios.post(`http://localhost:4000/staff/edit-staff/${row[0]._d}`, formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+      navigate('/admin/staff/display');
+
+        } catch (error) {
+          console.log(error)
+        }   
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-    }
-  };
+    }     
+   }
+    
+ 
 
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
@@ -133,10 +153,10 @@ function Staff({ staff, onFormSubmit }) {
       </div>
 
       <button type="submit" className="w-full mb-5 ring-primary-800 border-primary text-xl text-black bg-slate-500 mt-5 text-[19px] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-        {staff ? 'Update' : 'Create'}
+        {row ? 'Update' : 'Create'}
       </button>
     </form>
   );
-}
+};
 
 export default Staff;

@@ -1,12 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
 import Layout from '../layout/Layout';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Table({ columns, initialRows,type }) {
-  const [rows, setRows] = useState(initialRows);
 
   const handleDelete = async(id,type) =>{
       try {
@@ -48,17 +47,21 @@ function Table({ columns, initialRows,type }) {
                   <button type='submit' onClick={() => handleDelete(row._id, type)} className="text-blue-500 hover:text-blue-700">
                     <DeleteIcon />
                   </button>
-                  <button type='submit'  className="text-red-500 hover:text-red-700 ml-2">
-                  <EditIcon />
-                  </button>
                   </form>
+                  <Link
+                  to= {`/admin/${type}`}  state={{row:initialRows}}
+                       className="text-red-500 hover:text-red-700 ml-2"
+                       >
+                     <EditIcon />
+                         </Link>
+
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </Layout>
+    </Layout> 
   );
 }
 

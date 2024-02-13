@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios  from 'axios';
+import { useLocation,useNavigate } from 'react-router-dom';
 
-function Service({ service, onFormSubmit }) {
+function Service() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {row} = location.state || ''
   const [formData, setFormData] = useState({
-    title: service ? service.title : '',
-    description: service ? service.description : '',
+    title: row ? row[0].title : '',
+    description: row ? row[0].description : '',
     image: '',
   });
 
   useEffect(() => {
-    if (service) {
+    if (row) {
       setFormData({
-        title: service.title,
-        description: service.description,
+        title: row[0].title,
+        description: row[0].description,
       });
     }
-  }, [service]);
+  }, [row]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,6 +50,7 @@ function Service({ service, onFormSubmit }) {
 
       });
       console.log("Form submission response:", response.data);
+      navigate('/admin/service/display');
   
       // Clear the form here by resetting formData state
       setFormData({
@@ -54,8 +59,21 @@ function Service({ service, onFormSubmit }) {
         image:'',
       });
   
-      if (onFormSubmit) {
-        onFormSubmit(response.data);
+      if (row) {
+        // onFormSubmit(response.data);
+        try {
+          const response = await axios.post(`http://localhost:4000/service/edit-service/${row[0]._d}`, formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+      navigate('/admin/service/display');
+
+        } catch (error) {
+          console.log(error)
+        }
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -106,7 +124,7 @@ function Service({ service, onFormSubmit }) {
       </div>
 
       <button type="submit" className="w-full ring-primary-800 border-primary text-xl text-black bg-slate-500 mt-5 text-[19px] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-        {service ? 'Update' : 'Create'}
+        {row ? 'Update' : 'Create'}
       </button>
     </form>
   );

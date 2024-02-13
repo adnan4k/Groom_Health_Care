@@ -1,27 +1,31 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useLocation,useNavigate } from 'react-router-dom';
 
-function Testimony({ testimony, onFormSubmit }) {
+function Testimony() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {row} = location.state || ''
   const [formData, setFormData] = useState({
-    name: testimony ? testimony.name : '',
-    title:testimony ? testimony.title : '',
-    experience:testimony ? testimony.experience : 0,
-    description: testimony ? testimony.description : '',
+    name: row ? row[0].name : '',
+    title:row ? row[0].title : '',
+    experience:row ? row[0].experience : 0,
+    description: row ? row[0].description : '',
     // Assuming image handling will be implemented separately
     image: '',
   });
 
   useEffect(() => {
-    // Update local state if testimony prop changes, for example when editing
-    if (testimony) {
+    // Update local state if row prop changes, for example when editing
+    if (row) {
       setFormData({
-        name: testimony.name,
-        description: testimony.description,
-        title: testimony.title ,
-        experience:testimony.experience,
+        name: row[0].name,
+        description: row[0].description,
+        title: row[0].title ,
+        experience:row[0].experience,
       });
     }
-  }, [testimony]);
+  }, [row]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +54,7 @@ function Testimony({ testimony, onFormSubmit }) {
 
       });
       console.log("Form submission response:", response.data);
+      navigate('/admin/testimony/display');
   
       // Clear the form here by resetting formData state
       setFormData({
@@ -58,8 +63,20 @@ function Testimony({ testimony, onFormSubmit }) {
         image:'',
       });
   
-      if (onFormSubmit) {
-        onFormSubmit(response.data);
+      if (row) {
+        try {
+          const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[0]._d}`, formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+
+      });
+      console.log("Form submission response:", response.data);
+      navigate('/admin/testimony/display');
+
+        } catch (error) {
+          console.log(error)
+        }   
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -110,7 +127,7 @@ function Testimony({ testimony, onFormSubmit }) {
       </div>
 
       <button type="submit" className="w-full ring-primary-800 border-primary text-xl text-black bg-slate-500 mt-5 text-[19px] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-        {testimony ? 'Update' : 'Create'}
+        {row ? 'Update' : 'Create'}
       </button>
     </form>
   );
