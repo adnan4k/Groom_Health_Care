@@ -7,10 +7,8 @@ function Testimony() {
   const navigate = useNavigate();
   const {row} = location.state || ''
   const [formData, setFormData] = useState({
-    name: row ? row[0].name : '',
-    title:row ? row[0].title : '',
-    experience:row ? row[0].experience : 0,
     description: row ? row[0].description : '',
+    name:row ? row[0].name : '',
     // Assuming image handling will be implemented separately
     image: '',
   });
@@ -19,10 +17,8 @@ function Testimony() {
     // Update local state if row prop changes, for example when editing
     if (row) {
       setFormData({
-        name: row[0].name,
         description: row[0].description,
-        title: row[0].title ,
-        experience:row[0].experience,
+        name: row[0].name ,
       });
     }
   }, [row]);
@@ -44,10 +40,15 @@ function Testimony() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    const formDataToSend= new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('description', formData.description);
+    if (formData.image) {
+      formDataToSend.append('image', formData.image);
+    }
     try {
       // console.log(data)
-      const response = await axios.post('http://localhost:4000/testimony/create-testimony', formData, {
+      const response = await axios.post('http://localhost:4000/testimony/create-testimony', formDataToSend, {
         headers:{
           'Content-Type': 'multipart/form-data',
         }
@@ -58,14 +59,14 @@ function Testimony() {
   
       // Clear the form here by resetting formData state
       setFormData({
-        title: '',
+        name: '',
         description: '',
         image:'',
       });
   
       if (row) {
         try {
-          const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[0]._d}`, formData, {
+          const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[0]._d}`, formDataToSend, {
         headers:{
           'Content-Type': 'multipart/form-data',
         }
@@ -132,5 +133,4 @@ function Testimony() {
     </form>
   );
 }
-
 export default Testimony;

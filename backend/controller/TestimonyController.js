@@ -2,15 +2,15 @@ import { Testimony } from "../model/Testimony.js";
 
 export const createTestimony = async (req,res)=>{
     const {
-        title,
+        name,
         image,
         description,
     } = req.body;
     
     try {
 const testimony = new Testimony ({
-            title:title,
-            image:image,
+            name:name,
+            image:req.file.filename,
             description:description,
 
         })
@@ -33,7 +33,7 @@ const testimony = new Testimony ({
 
 export const updateTestimony = async(req,res,next) =>{
     const {   
-        title,
+        name,
         image,
         description,
     } = req.body;
@@ -42,9 +42,9 @@ export const updateTestimony = async(req,res,next) =>{
 
     try {
     const testimony = await Testimony.findByIdAndUpdate(id,{
-        title:title,
-        image:image,
-       description:description
+        name:name,
+        image:req.file.filename,
+        description:description
     },{new:true})    
     if(!testimony){
      return res.status(500).json({message:"error while saving"});

@@ -22,7 +22,7 @@ function TestimonyTable() {
     { 
       key: 'image', 
       label: 'Image', 
-      render: (row) => <img src={row.image} alt={row.title} style={{ width: '50px' }} /> 
+      render: (row) => <img src={row.image} alt={row.name} style={{ width: '50px' }} /> 
     },
   ];
   const type = "testimony"

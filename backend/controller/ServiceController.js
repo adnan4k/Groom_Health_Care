@@ -10,7 +10,7 @@ export const createService = async (req,res)=>{
     try {
 const service = new Service ({
             title:title,
-            image:image,
+            image:req.file.filename,
             description:description,
 
         })
@@ -43,8 +43,8 @@ export const updateService = async(req,res,next) =>{
     try {
     const service = await Service.findByIdAndUpdate(id,{
         title:title,
-        image:image,
-       description:description
+        image:req.file.filename,
+        description:description
     },{new:true})    
     if(!service){
      return res.status(500).json({message:"error while saving"});

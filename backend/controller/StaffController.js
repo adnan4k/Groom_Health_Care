@@ -12,7 +12,7 @@ export const createStaff = async (req,res)=>{
     try {
 const staff = new Staff ({
             title:title,
-            image:image,
+            image:req.file.filename,
             description:description,
             name:name,
             experience:experience,
@@ -49,8 +49,8 @@ export const updateStaff = async(req,res,next) =>{
     try {
     const staff = await Staff.findByIdAndUpdate(id,{
         title:title,
-        image:image,
-       description:description,
+        image:req.file.filename,
+        description:description,
        name:name,
        experience:experience,
     },{new:true})    

@@ -43,6 +43,7 @@ function Service() {
   
     try {
       // console.log(data)
+      
       const response = await axios.post('http://localhost:4000/service/create-service', formData, {
         headers:{
           'Content-Type': 'multipart/form-data',

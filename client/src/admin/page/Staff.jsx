@@ -44,10 +44,17 @@ function Staff() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    const formDataToSend= new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('title', formData.title);
+    formDataToSend.append('description', formData.description);
+    formDataToSend.append('experience', formData.experience);
+    if (formData.image) {
+      formDataToSend.append('image', formData.image);
+    }
     try {
       // console.log(data)
-      const response = await axios.post('http://localhost:4000/staff/create-staff', formData, {
+      const response = await axios.post('http://localhost:4000/staff/create-staff', formDataToSend, {
         headers:{
           'Content-Type': 'multipart/form-data',
         }
@@ -67,7 +74,7 @@ function Staff() {
   
       if (row) {
         try {
-          const response = await axios.post(`http://localhost:4000/staff/edit-staff/${row[0]._d}`, formData, {
+          const response = await axios.post(`http://localhost:4000/staff/edit-staff/${row[0]._d}`, formDataToSend, {
         headers:{
           'Content-Type': 'multipart/form-data',
         }

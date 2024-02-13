@@ -6,16 +6,16 @@ import NewsRoutes from "./routes/NewsRoute.js"
 import ServiceRoutes from "./routes/ServiceRoute.js"
 import StaffRoutes from "./routes/StaffRoute.js"
 import TestimonyRoutes from "./routes/TestimonyRoute.js"
-
+import path from "path"
 
 
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, './images');
+      cb(null, './public/images');
   },
   filename: function (req, file, cb) {
-      cb(null, Date.now() + "--" + file.originalname);
+      cb(null, file.fieldname + "--" + Date.now() + path.extname(file.originalname));
   }
 });  
   

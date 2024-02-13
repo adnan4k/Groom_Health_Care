@@ -17,7 +17,7 @@ function ServiceTable() {
   }, []);
 
   const columns = [
-    { key: 'name', label: 'Name' },
+    { key: 'title', label: 'Title' },
     { key: 'description', label: 'Description' },
     { 
       key: 'image', 

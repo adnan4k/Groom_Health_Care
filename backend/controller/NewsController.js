@@ -10,7 +10,7 @@ export const createNews = async (req,res)=>{
     try {
         const news = new News ({
             title:title,
-            image:image,
+            image:req.file.filename,
             content:content,
 
         })
@@ -44,8 +44,8 @@ export const updateNews = async(req,res,next) =>{
     try {
     const news = await News.findByIdAndUpdate(id,{
         title:title,
-        image:image,
-       content:content
+        image:req.file.filename,
+        content:content
     },{new:true})    
 
     if(!news){

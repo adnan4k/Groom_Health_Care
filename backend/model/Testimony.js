@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const TestimonySchema = new mongoose.Schema({
-    title:{
+    name:{
         type:String
     },
     description:{
