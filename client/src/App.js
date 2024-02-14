@@ -9,6 +9,9 @@ import NewsTables from "./admin/tables/NewsTable";
 import StaffTable from "./admin/tables/StaffTable";
 import TestimonyTable from "./admin/tables/TestimonyTable";
 import ServiceTable from "./admin/tables/ServiceTable";
+import Appointment from "./pages/Appointment";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
         <Route path="/admin/staff/display" element={<StaffTable/>} />
         <Route path="/admin/testimony/display" element={<TestimonyTable/>} />
         <Route path="/admin/service/display" element={<ServiceTable/>} />
+        <Route path="/appointment" element={<Appointment/>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
     </BrowserRouter>    </div>
   );
