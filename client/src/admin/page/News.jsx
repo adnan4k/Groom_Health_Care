@@ -41,6 +41,8 @@ function News() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //create
+    if(!row){
     try {
       const response = await axios.post('http://localhost:4000/news/create-news', formData, {
         headers: {
@@ -50,31 +52,33 @@ function News() {
       console.log("Form submission response:", response.data);
       navigate('/admin/news/display');
 
-  
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  }
+    //edit
+    if (row) {
+      try {
+        const response = await axios.post(`http://localhost:4000/news/edit-news/${row[0]._d}`, formData, {
+      headers:{
+        'Content-Type': 'multipart/form-data',
+      }
+
+    });
+    console.log("Form submission response:", response.data);
       // Clear the form here by resetting formData state
       setFormData({
         title: '',
         content: '',
         image: '',
       });
-  
-      if (row) {
-        try {
-          const response = await axios.post(`http://localhost:4000/news/edit-news/${row[0]._d}`, formData, {
-        headers:{
-          'Content-Type': 'multipart/form-data',
-        }
+    navigate('/admin/news/display');
 
-      });
-      console.log("Form submission response:", response.data);
-      navigate('/admin/news/display');
+      } catch (error) {
+        console.log(error)
+      }      }
 
-        } catch (error) {
-          console.log(error)
-        }      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
+    
   };
   
   return (

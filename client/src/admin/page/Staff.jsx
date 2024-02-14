@@ -53,17 +53,29 @@ function Staff() {
       formDataToSend.append('image', formData.image);
     }
     try {
-      // console.log(data)
-      const response = await axios.post('http://localhost:4000/staff/create-staff', formDataToSend, {
-        headers:{
-          'Content-Type': 'multipart/form-data',
-        }
+      if(!row){
+        const response = await axios.post('http://localhost:4000/staff/create-staff', formDataToSend, {
+          headers:{
+            'Content-Type': 'multipart/form-data',
+          }
+  
+        });
+        console.log("Form submission response:", response.data);
 
-      });
+      }else{
+        const response = await axios.post(`http://localhost:4000/staff/edit-staff/${row[0]._d}`, formDataToSend, {
+          headers:{
+            'Content-Type': 'multipart/form-data',
+          }
+  
+      })
       console.log("Form submission response:", response.data);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  }       
       navigate('/admin/staff/display');
-
-      // Clear the form here by resetting formData state
+ // Clear the form here by resetting formData state
       setFormData({
         title: '',
         description: '',
@@ -72,24 +84,7 @@ function Staff() {
         experience:''
       });
   
-      if (row) {
-        try {
-          const response = await axios.post(`http://localhost:4000/staff/edit-staff/${row[0]._d}`, formDataToSend, {
-        headers:{
-          'Content-Type': 'multipart/form-data',
-        }
-
-      });
-      console.log("Form submission response:", response.data);
-      navigate('/admin/staff/display');
-
-        } catch (error) {
-          console.log(error)
-        }   
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }     
+      
    }
     
  
@@ -151,6 +146,7 @@ function Staff() {
       <div className="mb-5">
         <label htmlFor="image" className="block mb-2 text-[18px] font-medium text-gray-900 dark:text-white">Image</label>
         <input
+        required
           type="file"
           id="image"
           name="image"

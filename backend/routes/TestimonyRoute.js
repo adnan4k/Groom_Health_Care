@@ -5,7 +5,7 @@ import { allTestimony, createTestimony, deleteTestimony, updateTestimony } from 
 const TestimonyRoutes = express.Router();
 
 TestimonyRoutes.post('/create-testimony',createTestimony)
-TestimonyRoutes.put('/update-testimony/:id',updateTestimony)
+TestimonyRoutes.post('/edit-testimony/:id',updateTestimony)
 TestimonyRoutes.get('/get-testimony',allTestimony)
 TestimonyRoutes.delete('/delete-testimony/:id',deleteTestimony)
 

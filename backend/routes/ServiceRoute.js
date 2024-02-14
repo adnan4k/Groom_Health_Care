@@ -5,7 +5,7 @@ import { allService, createService, deleteService, updateService } from "../cont
 const ServiceRoutes = express.Router();
 
 ServiceRoutes.post('/create-service',createService)
-ServiceRoutes.put('/update-service/:id',updateService)
+ServiceRoutes.post('/edit-service/:id',updateService)
 ServiceRoutes.get('/get-service',allService)
 ServiceRoutes.delete('/delete-service/:id',deleteService)
 

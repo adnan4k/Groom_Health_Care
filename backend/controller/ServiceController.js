@@ -38,12 +38,12 @@ export const updateService = async(req,res,next) =>{
         description,
     } = req.body;
     const {id} = req.params;
-    
+    console.log(req.file.filename)
 
     try {
     const service = await Service.findByIdAndUpdate(id,{
         title:title,
-        image:req.file.filename,
+        image:req.file.filename ,
         description:description
     },{new:true})    
     if(!service){

@@ -14,11 +14,10 @@ function Testimony() {
   });
 
   useEffect(() => {
-    // Update local state if row prop changes, for example when editing
     if (row) {
       setFormData({
+        name: row[0].name,
         description: row[0].description,
-        name: row[0].name ,
       });
     }
   }, [row]);
@@ -26,10 +25,12 @@ function Testimony() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    console.log(formData,"from handle change")
+
   };
 
+  
   const handleFileChange = (e) => {
-    // Set file to formData state
     if (e.target.files[0]) {
       setFormData(prevFormData => ({
         ...prevFormData,
@@ -40,49 +41,41 @@ function Testimony() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend= new FormData();
+
+    // Create an instance of FormData
+    const formDataToSend = new FormData();
     formDataToSend.append('name', formData.name);
     formDataToSend.append('description', formData.description);
+
+    // Append file if it exists
     if (formData.image) {
-      formDataToSend.append('image', formData.image);
+        formDataToSend.append('image', formData.image);
     }
+
     try {
-      // console.log(data)
-      const response = await axios.post('http://localhost:4000/testimony/create-testimony', formDataToSend, {
-        headers:{
-          'Content-Type': 'multipart/form-data',
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        };
+
+        if (!row) {
+            // For creating a new service
+            const response = await axios.post('http://localhost:4000/testimony/create-testimony', formDataToSend, config);
+            console.log("Form submission response:", response.data);
+        } else {
+            // For updating an existing service
+            // Adjust the URL and HTTP method as necessary. If your backend expects a PUT request for updates, change axios.post to axios.put here.
+            const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[0]._id}`, formDataToSend, config);
+            console.log("Form submission response:", response.data);
         }
 
-      });
-      console.log("Form submission response:", response.data);
-      navigate('/admin/testimony/display');
-  
-      // Clear the form here by resetting formData state
-      setFormData({
-        name: '',
-        description: '',
-        image:'',
-      });
-  
-      if (row) {
-        try {
-          const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[0]._d}`, formDataToSend, {
-        headers:{
-          'Content-Type': 'multipart/form-data',
-        }
-
-      });
-      console.log("Form submission response:", response.data);
-      navigate('/admin/testimony/display');
-
-        } catch (error) {
-          console.log(error)
-        }   
-      }
+        // Redirect after the operation
+        navigate('/admin/testimony/display');
     } catch (error) {
-      console.error("Error submitting form:", error);
+        console.error("Error submitting form:", error);
     }
-  };
+};
 
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
@@ -119,6 +112,7 @@ function Testimony() {
       <div className="mb-5">
         <label htmlFor="image" className="block mb-2 text-[18px] font-medium text-gray-900 dark:text-white">Image</label>
         <input
+        required
           type="file"
           id="image"
           name="image"

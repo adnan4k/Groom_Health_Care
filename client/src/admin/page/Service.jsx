@@ -11,11 +11,10 @@ function Service() {
     description: row ? row[0].description : '',
     image: '',
   });
-
   useEffect(() => {
     if (row) {
       setFormData({
-        title: row[0].title,
+        title: row[0].title, // Changed from title to name
         description: row[0].description,
       });
     }
@@ -24,11 +23,8 @@ function Service() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    console.log(formData,"from handle change")
-
   };
 
-  
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
       setFormData(prevFormData => ({
@@ -40,47 +36,34 @@ function Service() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
+    const formDataToSend = new FormData();
+    formDataToSend.append('title', formData.title); // Adjusted for 'name'
+    formDataToSend.append('description', formData.description);
+
+    if (formData.image) {
+      formDataToSend.append('image', formData.image);
+    }
+
     try {
-      // console.log(data)
-      
-      const response = await axios.post('http://localhost:4000/service/create-service', formData, {
-        headers:{
+      const config = {
+        headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
+      };
 
-      });
-      console.log("Form submission response:", response.data);
-      navigate('/admin/service/display');
-  
-      // Clear the form here by resetting formData state
-      setFormData({
-        title: '',
-        description: '',
-        image:'',
-      });
-  
-      if (row) {
-        // onFormSubmit(response.data);
-        try {
-          const response = await axios.post(`http://localhost:4000/service/edit-service/${row[0]._d}`, formData, {
-        headers:{
-          'Content-Type': 'multipart/form-data',
-        }
-
-      });
-      console.log("Form submission response:", response.data);
-      navigate('/admin/service/display');
-
-        } catch (error) {
-          console.log(error)
-        }
+      let response;
+      if (!row) {
+        response = await axios.post('http://localhost:4000/service/create-service', formDataToSend, config);
+      } else {
+        response = await axios.post(`http://localhost:4000/service/edit-service/${row[0]._id}`, formDataToSend, config);
       }
+      console.log("Form submission response:", response.data);
+      navigate('/admin/service/display');
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
-
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
       <div className="my-5">
@@ -116,6 +99,7 @@ function Service() {
       <div className="mb-5">
         <label htmlFor="image" className="block mb-2 text-[18px] font-medium text-gray-900 dark:text-white">Image</label>
         <input
+        required
           type="file"
           id="image"
           name="image"
