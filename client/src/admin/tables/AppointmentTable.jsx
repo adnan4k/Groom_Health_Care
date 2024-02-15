@@ -24,6 +24,7 @@ function AppointmentTable() {
       { key: 'date', label: 'Date' },
       { key: 'time', label: 'Time' },
       { key: 'city', label: 'City' },
+      { key: 'reason', label: 'Reason' },
 
     ];
     const type = "appointment"

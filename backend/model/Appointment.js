@@ -22,6 +22,9 @@ const NewsSchema = new mongoose.Schema({
     state:{
         type:String
     },
+    reason:{
+        type:String
+    },
     user:{
         type:mongoose.Types.ObjectId,
         ref:"User"

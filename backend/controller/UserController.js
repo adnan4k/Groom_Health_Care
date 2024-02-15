@@ -58,11 +58,10 @@ async function sendEmailToAdmin(userAppointmentDetails) {
            pass: "vypd cqxp eqqm krsg",
            port: 465,
            secure: true,
-        }
+        }       
      });
    
   let email = userAppointmentDetails.email
-  // Send email with defined transport object
   let info = await transporter.sendMail({
     from: email, // sender address
     to: "fayomuhe5@gmail.com", // list of receivers
@@ -71,12 +70,12 @@ async function sendEmailToAdmin(userAppointmentDetails) {
     html: `<b>A new appointment has been created:</b> <pre>${JSON.stringify(userAppointmentDetails, null, 2)}</pre>`, // html body
   });
 
-  console.log("Message sent: %s", info.messageId);
+//   console.log("Message sent: %s", info.messageId);
 }
 
 export const makeAppointment = async(req, res) => {
   const appointmentDetails = req.body;
-    
+    // console.log(appointmentDetails)
   try {
     const userAppointment = new Appointment(appointmentDetails);
     const savedAppointment = await userAppointment.save();
