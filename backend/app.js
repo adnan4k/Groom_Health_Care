@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import express from "express"
+import bodyParser from "body-parser"
 import cors from "cors"
 import multer from "multer"
 import NewsRoutes from "./routes/NewsRoute.js"
@@ -7,6 +8,7 @@ import ServiceRoutes from "./routes/ServiceRoute.js"
 import StaffRoutes from "./routes/StaffRoute.js"
 import TestimonyRoutes from "./routes/TestimonyRoute.js"
 import path from "path"
+import UserRoutes from "./routes/UserRoute.js"
 
 
 
@@ -24,6 +26,7 @@ const storage = multer.diskStorage({
   const app = express();
   app.use(cors());
   app.use(express.json());
+  app.use(bodyParser.json());
   app.use(express.static('public'))
 //   app.use(express.urlencoded({extended:true}));
   app.use('/images',express.static('images'))
@@ -33,6 +36,7 @@ const storage = multer.diskStorage({
   app.use('/service',upload.single('image'),ServiceRoutes)
   app.use('/staff',upload.single('image'),StaffRoutes)
   app.use('/testimony',upload.single('image'),TestimonyRoutes)
+  app.use('/user',UserRoutes)
 
 mongoose.connect("mongodb://127.0.0.1:27017/groom_health_care")
   .then(() => {
