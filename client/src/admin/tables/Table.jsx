@@ -28,9 +28,9 @@ function Table({ columns, initialRows,type }) {
                   {column.label}
                 </th>
               ))}
-              <th scope="col" className="px-6 sm:px-16 py-3">
+              {type==='appointment'?'':(<th scope="col" className="px-6 sm:px-16 py-3">
                 Actions
-              </th>
+              </th>)}
             </tr>
           </thead>
           <tbody>
@@ -42,18 +42,21 @@ function Table({ columns, initialRows,type }) {
                   </td>
                 ))}
                 <td className="px-6 sm:px-16 py-4 text-right">
-                  {/* Example of actions you might have */}
-                  <form action="">
-                  <button type='submit' onClick={() => handleDelete(row._id, type)} className="text-blue-500 hover:text-blue-700">
-                    <DeleteIcon />
-                  </button>
-                  </form>
-                  <Link
-                  to= {`/admin/${type}`}  state={{row:initialRows}}
-                       className="text-red-500 hover:text-red-700 ml-2"
-                       >
-                     <EditIcon />
-                         </Link>
+                {
+                type==='appointment'? '': (
+               <>
+           <form action="">
+        <button type='submit' onClick={() => handleDelete(row._id, type)} className="text-blue-500 hover:text-blue-700">
+          <DeleteIcon />
+        </button>
+      </form>
+      <Link to={`/admin/${type}`} state={{ row: initialRows }} className="text-red-500 hover:text-red-700 ml-2">
+        <EditIcon />
+      </Link>
+    </>
+  )
+}
+
 
                 </td>
               </tr>

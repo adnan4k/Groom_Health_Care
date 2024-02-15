@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
+import NavBar from '../components/NavBar';
 
 function Appointment() {
     const [formData, setFormData] = useState({
@@ -27,6 +28,12 @@ function Appointment() {
       };
   return (
     <div>
+        <NavBar />
+         <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+                  Appointment
+          </h2>
+          </div>
         <div class="flex items-center justify-center p-12">
     <div class="mx-auto w-full max-w-[550px] bg-white">
         <form onSubmit={handleSubmit}>

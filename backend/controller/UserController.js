@@ -27,21 +27,26 @@ export const  signup = async(req,res) =>{
       }
    }
 }
-
 export const login = async(req,res) => {
-    const {email,password} = req.body
+    const {email, password} = req.body;
 
-       try {
-          const user = await User.findOne({email:email})
-          if(user.password == password){
-            res.status(200).json({message:"loggedin",user})
-          }else{
-            res.status(400).json("notfound")
-          }
-       } catch (error) {
-        res.json(error)
-       }
-}
+        if(!email && !password){
+            return res.json({message:'provide credential'})
+        }
+    try {
+        const user = await User.findOne({email: email});
+        if (!user) {
+            return res.status(400).json({message: "notfound"}); // Add return here
+        }
+        if (user.password == password) {
+            return res.status(200).json({message: "loggedin", user}); // Add return here
+        } else {
+            return res.status(400).json({message: "invalidCredentials"}); // Add return here
+        }
+    } catch (error) {
+        return res.json(error); // Add return here
+    }
+};
 
 
 // Function to send an email

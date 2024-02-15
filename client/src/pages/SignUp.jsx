@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ function SignUp() {
           console.log('form is here ')
              try {
               const response = await axios.post('http://localhost:4000/user/signup',formData)
-              console.log("form submission response",response.data)
+              console.log("form submission response",response.data,response.status,response.statusText)
               if(response.data.role === 'admin'){
                 navigate('/admin/news/display')
               }else{
@@ -47,6 +48,7 @@ function SignUp() {
 
   return (
     <div>
+          <NavBar />
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">

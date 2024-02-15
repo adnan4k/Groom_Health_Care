@@ -12,6 +12,7 @@ import ServiceTable from "./admin/tables/ServiceTable";
 import Appointment from "./pages/Appointment";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import AppointmentTable from "./admin/tables/AppointmentTable";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/appointment" element={<Appointment/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/appointment-details" element={<AppointmentTable/>} />
       </Routes>
     </BrowserRouter>    </div>
   );
