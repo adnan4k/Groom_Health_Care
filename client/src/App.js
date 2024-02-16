@@ -13,6 +13,11 @@ import Appointment from "./pages/Appointment";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import AppointmentTable from "./admin/tables/AppointmentTable";
+import NewsDetail from "./pages/NewsDetail";
+import StaffSection from "./sections/StaffSection";
+import Services from "./sections/Services";
+import Contact from "./sections/Contact";
+import AboutSection from "./sections/AboutSection";
 
 
 function App() {
@@ -33,7 +38,11 @@ function App() {
         <Route path="/appointment" element={<Appointment/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/news-detail" element={<NewsDetail/>} />
         <Route path="/appointment-details" element={<AppointmentTable/>} />
+        <Route path="/section-section" element={<StaffSection/>} />
+        <Route path="/service-section" element={<Services/>} />
+        <Route path="/about-section" element={<AboutSection/>} />
       </Routes>
     </BrowserRouter>    </div>
   );

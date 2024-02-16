@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function News() {
   const [data,setData] = useState([]);
@@ -18,6 +19,9 @@ function News() {
 
     fetchData();
   }, [])
+  const truncateText = (text, maxLength = 300) => {
+    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  };
   return (
     <div className='justify-center items-center'>
       <h1 className='text-center text-3xl font-bold my-[3%] '>Article and News</h1>
@@ -26,8 +30,8 @@ function News() {
         <div key={item.id} className='card1 flex flex-col justify-center items-center bg-[#007A7433]'>
           <img  src={`http://localhost:4000/images/${item.image}`}  alt="news" className='w-full'/>
           <h2 className='title text-black font-bold text-2xl'>{item.title}</h2>
-          <p className='content font-semibold text-center w-[90%]'>{item.content}</p>
-          <button className='text-[#0A8FFF] text-xl'>Read More <span className='inline-block'><img src={item.readMoreIcon} alt="" /></span></button>
+          <p className='content font-semibold text-center w-[90%]'>{truncateText(item.content)}</p>
+          <Link to='/news-detail' state={{content:item.content, title:item.title}} className='text-[#0A8FFF] text-xl'>Read More <span className='inline-block'><img src='/images/up.png' alt="" /></span></Link>
         </div>
       ))}
     </div>

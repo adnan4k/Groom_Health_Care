@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import NavBar from '../components/NavBar';
+import Footer from '../sections/Footer';
 
 function Login() {
   const navigate = useNavigate()
@@ -101,6 +102,7 @@ function Login() {
         </div>
     </div>
 </div>
+<Footer />
     </div>
   )
 }
