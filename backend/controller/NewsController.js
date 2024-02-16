@@ -6,7 +6,6 @@ export const createNews = async (req,res)=>{
         image,
         content,
     } = req.body;
-    
     try {
         const news = new News ({
             title:title,
@@ -29,9 +28,6 @@ export const createNews = async (req,res)=>{
 }
 
 
-
-
-
 export const updateNews = async(req,res,next) =>{
     const {   
         title,
@@ -42,11 +38,15 @@ export const updateNews = async(req,res,next) =>{
     
 
     try {
-    const news = await News.findByIdAndUpdate(id,{
-        title:title,
-        image:req.file.filename,
-        content:content
-    },{new:true})    
+        const updateData = {
+            title: title,
+            content: content,
+        };
+        
+        if (req.file) {
+            updateData.image = req.file.filename;
+        }
+    const news = await News.findByIdAndUpdate(id,updateData,{new:true})    
 
     if(!news){
      return res.status(500).json({message:"error while saving"});

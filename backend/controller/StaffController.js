@@ -36,6 +36,7 @@ const staff = new Staff ({
 
 
 export const updateStaff = async(req,res,next) =>{
+
     const {   
         title,
         image,
@@ -44,16 +45,19 @@ export const updateStaff = async(req,res,next) =>{
         experience,
     } = req.body;
     const {id} = req.params;
-    
-
+      
     try {
-    const staff = await Staff.findByIdAndUpdate(id,{
-        title:title,
-        image:req.file.filename,
-        description:description,
-       name:name,
-       experience:experience,
-    },{new:true})    
+        const updateData = {
+            title: title,
+            description: description,
+            name:name,
+            experience:experience
+        };
+        
+        if (req.file) {
+            updateData.image = req.file.filename;
+        }
+    const staff = await Staff.findByIdAndUpdate(id,updateData,{new:true})    
     if(!staff){
      return res.status(500).json({message:"error while saving"});
     }

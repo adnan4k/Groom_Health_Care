@@ -41,11 +41,15 @@ export const updateTestimony = async(req,res,next) =>{
     
 
     try {
-    const testimony = await Testimony.findByIdAndUpdate(id,{
-        name:name,
-        image:req.file.filename,
-        description:description
-    },{new:true})    
+        const updateData = {
+            name: name,
+            description: description,
+        };
+        
+        if (req.file) {
+            updateData.image = req.file.filename;
+        }
+    const testimony = await Testimony.findByIdAndUpdate(id,updateData,{new:true})    
     if(!testimony){
      return res.status(500).json({message:"error while saving"});
     }

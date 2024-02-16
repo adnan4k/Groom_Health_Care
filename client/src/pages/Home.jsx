@@ -15,8 +15,10 @@ import SimpleSlider from '../components/Testimony'
 function Home() {
   return (
     <div>
+      <div className=''>
       <NavBar />
       <HeroSection />
+      </div>
       <Services />
       <StaffSection />
       <AboutSection />

@@ -4,7 +4,7 @@ function HeroSection() {
   // -mt-[10%] -ml-[10%]  bg-gradient-to-b from-cyan-200/20 to-blue-500/10 ... rounded-full
   return (
     <div className='flex flex-col sm:flex-row '>
-      <div class="mt-10" >
+      <div class="mt-10 " >
        <div className='container flex flex-col w-[80%] ml-[10%] justify-center'>
         <h1 className='w-1/2  text-4xl font-bold '>Serving your health needs is our priority</h1>
         <p className='w-[80%] my-[5%]'> 

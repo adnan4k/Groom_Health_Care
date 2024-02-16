@@ -32,16 +32,15 @@ function Staff() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
   const handleFileChange = (e) => {
-    if (e.target.files[index]) {
+    const file = e.target.files[0]; // Get the first file
+    if (file) {
       setFormData(prevFormData => ({
         ...prevFormData,
-        image: e.target.files[index],
+        image: file,
       }));
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSend= new FormData();
@@ -146,7 +145,7 @@ function Staff() {
       <div className="mb-5">
         <label htmlFor="image" className="block mb-2 text-[18px] font-medium text-gray-9index dark:text-white">Image</label>
         <input
-        required
+        // required
           type="file"
           id="image"
           name="image"
@@ -155,7 +154,8 @@ function Staff() {
         />
       </div>
 
-      <button type="submit" className="w-full mb-5 ring-primary-8index border-primary text-xl text-black bg-slate-5index mt-5 text-[19px] hover:bg-primary-7index focus:ring-4 focus:outline-none focus:ring-primary-3index font-medium rounded-lg px-5 py-2.5 text-center dark:bg-primary-6index dark:hover:bg-primary-7index dark:focus:ring-primary-8index">
+      <button type="submit" style={{backgroundColor:'#6A64F1'}}
+       className="w-full mb-5 ring-primary-8index border-primary text-xl text-white bg-slate-5index mt-5 text-[19px] hover:bg-primary-7index focus:ring-4 focus:outline-none focus:ring-primary-3index font-medium rounded-lg px-5 py-2.5 text-center dark:bg-primary-6index dark:hover:bg-primary-7index dark:focus:ring-primary-8index">
         {row ? 'Update' : 'Create'}
       </button>
     </form>
