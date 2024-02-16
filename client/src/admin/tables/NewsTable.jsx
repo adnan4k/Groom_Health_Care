@@ -26,8 +26,7 @@ function NewsTables() {
     },
   ];
   const type = "news"
-
-  return <Table columns={columns} initialRows={data}  type={type} />;
+  return <Table columns={columns} initialRows={data}   type={type} />;
 }
 
 export default NewsTables;

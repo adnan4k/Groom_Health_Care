@@ -43,11 +43,6 @@ function NavBar() {
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Groom Health Care</span>
     </a>
     <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        {/* <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-          <span className="sr-only">Open user menu</span>
-          <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo"/>
-        </button> */}
-        {/* <!-- Dropdown menu --> */}
         <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
           <div className="px-4 py-3">
             <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
@@ -68,7 +63,7 @@ function NavBar() {
 
         <h1 className="text-2xl">{getTitle(location.pathname)}</h1>
         <form  onSubmit={handleSubmit} className="text-center inline-block">
-          <button className="bg-blue-600 text-white :ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl ml-60 px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 outline-none ring-blue-800" >Add</button>
+         {location.pathname==='/appointment-details' ? '':( <button className="bg-blue-600 text-white :ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg ml-60 px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 outline-none ring-blue-800" >Add</button>)}
           </form>     
       </ul>
     </div>

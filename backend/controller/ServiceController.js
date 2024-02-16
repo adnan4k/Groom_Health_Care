@@ -30,31 +30,58 @@ const service = new Service ({
 
 
 
-
-export const updateService = async(req,res,next) =>{
-    const {   
-        title,
-        image,
-        description,
-    } = req.body;
-    const {id} = req.params;
-    console.log(req.file.filename)
-
+export const updateService = async(req,res) =>{
+    const{title,description} = req.body
+    const {id} = req.params
+      
     try {
-    const service = await Service.findByIdAndUpdate(id,{
-        title:title,
-        image:req.file.filename ,
-        description:description
-    },{new:true})    
-    if(!service){
-     return res.status(500).json({message:"error while saving"});
-    }
-
-return res.status(200).json({message:"updated service",service})
-} catch (error) {
-        return res.status(500).json({message:error.message})
-    }
+      
+        const updateData = {
+            title: title,
+            description: description,
+        };
+        
+        if (req.file) {
+            updateData.image = req.file.filename;
+        }
+        
+        const service = await Service.findByIdAndUpdate(id, updateData, { new: true });
+        
+        if(service){
+            return res.status(200).json({message:'service updated successfully'})
+        }else{
+            return res.status(500).json({message:'something went wrong'})
+        }
+     } catch (error) {
+        console.log(error,)
+        return res.status(500).json(error)
+     }
 }
+
+// export const updateService = async(req,res,next) =>{
+//     const {   
+//         title,
+//         image,
+//         description,
+//     } = req.body;
+//     const {id} = req.params;
+    
+
+//     try {
+//     const service = await Service.findByIdAndUpdate(id,{
+//         title:title,
+//         image:req.file.filename,
+//         description:description,
+//     },{new:true})    
+//     if(!service){
+//      return res.status(500).json({message:"error while saving"});
+//     }
+
+// return res.status(200).json({message:"updated Service",service})
+// } catch (error) {
+//         return res.status(500).json({message:error.message})
+//     }
+// }
 
 export const allService = async(req,res) =>{
     let service;

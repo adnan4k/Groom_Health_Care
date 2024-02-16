@@ -6,23 +6,22 @@ function News() {
   //accessing passed data
   const navigate = useNavigate()
   const location = useLocation();
-  const {row} = location.state || ''
-  
+  const {row,index} = location.state || ''
   const [formData, setFormData] = useState({
-    title: row ? row[0].title : '',
-    content: row ? row[0].content : '',
+    title: row ? row[index].title : '',
+    content: row ? row[index].content : '',
     image: null, 
   });
   useEffect(() => {
     // Update form data when `row` prop changes
     if (row) {
       setFormData({
-        title: row[0].title,
-        content: row[0].content,
+        title: row[index].title,
+        content: row[index].content,
         image: null, 
       });
     }
-  }, [row]);
+  }, [row,index]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,8 +41,10 @@ function News() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     //create
-    if(!row){
+    
     try {
+      console.log(`http://localhost:4000/news/edit-news/${row[index]._id}`,'route')
+      if(!row){
       const response = await axios.post('http://localhost:4000/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -51,34 +52,26 @@ function News() {
       });
       console.log("Form submission response:", response.data);
       navigate('/admin/news/display');
-
+    }else{
+      const response = await axios.post(`http://localhost:4000/news/edit-news/${row[index]._id}`, formData, {
+        headers:{
+          'Content-Type': 'multipart/form-data',
+        }
+  
+      });
+      console.log("Form submission response:", response.data);
+      navigate('/admin/news/display');
+  
+    }
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-  }
-    //edit
-    if (row) {
-      try {
-        const response = await axios.post(`http://localhost:4000/news/edit-news/${row[0]._d}`, formData, {
-      headers:{
-        'Content-Type': 'multipart/form-data',
-      }
 
+    setFormData({
+      title: '',
+      content: '',
+      image: '',
     });
-    console.log("Form submission response:", response.data);
-      // Clear the form here by resetting formData state
-      setFormData({
-        title: '',
-        content: '',
-        image: '',
-      });
-    navigate('/admin/news/display');
-
-      } catch (error) {
-        console.log(error)
-      }      }
-
-    
   };
   
   return (

@@ -1,13 +1,23 @@
 
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 
 function Layout({ children }) {
+   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+   // Function to toggle the sidebar
+   const toggleSidebar = () => {
+     setIsSidebarOpen(!isSidebarOpen);
+   };
   return (
    <div>
       <NavBar/>
     <div className='flex'>
+    <button className="sm:hidden" onClick={toggleSidebar}>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
        <aside id="separator-sidebar" className=" top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                <ul className="space-y-2 font-medium">

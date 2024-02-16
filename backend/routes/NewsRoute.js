@@ -5,7 +5,7 @@ import { allNews, createNews, deleteNews, updateNews } from "../controller/NewsC
 const NewsRoutes = express.Router();
 
 NewsRoutes.post('/create-news',createNews)
-NewsRoutes.put('/update-news/:id',updateNews)
+NewsRoutes.post('/edit-news/:id',updateNews)
 NewsRoutes.get('/get-news',allNews)
 NewsRoutes.delete('/delete-news/:id',deleteNews)
 

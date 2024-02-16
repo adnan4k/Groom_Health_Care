@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 function Table({ columns, initialRows,type }) {
 
   const handleDelete = async(id,type) =>{
@@ -50,7 +51,7 @@ function Table({ columns, initialRows,type }) {
           <DeleteIcon />
         </button>
       </form>
-      <Link to={`/admin/${type}`} state={{ row: initialRows }} className="text-red-500 hover:text-red-700 ml-2">
+      <Link to={`/admin/${type}`} state={{ row: initialRows,index:rowIndex }} className="text-red-500 hover:text-red-700 ml-2">
         <EditIcon />
       </Link>
     </>
