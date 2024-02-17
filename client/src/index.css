@@ -9,6 +9,19 @@ body {
   scroll-behavior: smooth;
 
 }
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+.fadeInDown {
+  animation: fadeInDown 2s ease-out forwards;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

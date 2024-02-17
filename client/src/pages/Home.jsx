@@ -12,42 +12,66 @@ import Contact from '../sections/Contact'
 import Footer from '../sections/Footer'
 import SimpleSlider from '../components/Testimony'
 import Values from '../sections/Values'
+import 'aos/dist/aos.css';
+import { useEffect } from 'react'
+import Aos from 'aos'
+
 
 function Home() {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000, // Global duration of animations in milliseconds
+      once: false, // Whether animation should happen only once - while scrolling down
+    });
+    Aos.refresh();
+
+  }, []);
   return (
-    <div className='overflow-hidden'>
-      <div className=''>
+    <div  data-aos="fade-up"
+     className='overflow-hidden'>
+      <div  data-aos="fade-up"
+       className=''>
       <NavBar />
       </div>
-      <div>
+      <div  data-aos="fade-up"
+       className=''>
       <HeroSection />
       </div>
-      <div id='service'>
+      <div  data-aos="fade-up"
+       id='service'>
       <Services />
       </div>
-      <div id='staff'>
+      <div  data-aos="fade-up"
+       id='staff'>
       <StaffSection />
       </div>
-      <div id='about'>
+      <div  data-aos="fade-up"
+       id='about'>
       <AboutSection />
       </div>
-      <div>
+      <div  data-aos="fade-up"
+       className=''>
       <Fact />
       </div>
-      <div>
+      <div  data-aos="fade-up"
+       className=''>
         {/* <Values /> */}
       </div>
-      <div>
+      <div  data-aos="fade-up"
+       className=''>
       <Sertification />
       </div>
-      <div id='news'>
+      <div  data-aos="fade-up"
+       id='news'>
       <News />
       </div>
-      <div>
+      <div  data-aos="fade-up"
+       className=''>
       <h2 className='flex my-[7%] text-3xl font-bold text-black justify-center items-center '>Testimonial</h2>
       <SimpleSlider />
       </div>
-      <div id='contact'>
+      <div  data-aos="fade-up"
+       id='contact'>
       <Contact />
       </div>
       <Footer />
