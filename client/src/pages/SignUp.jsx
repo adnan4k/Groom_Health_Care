@@ -28,10 +28,15 @@ function SignUp() {
   const handleSubmit = async(e) => {
     e.preventDefault();
         if(formData.password  === formData.password_confirmation){
-          console.log('form is here ')
+          // console.log(,'form is here ')
              try {
               const response = await axios.post('http://localhost:4000/user/signup',formData)
               console.log("form submission response",response.data,response.status,response.statusText)
+              console.log(response.status,'mama')
+              if(response.data.status === 400){
+                setError('Your account already exist please signin')
+              
+              }
               if(response.data.role === 'admin'){
                 navigate('/admin/news/display')
               }else{

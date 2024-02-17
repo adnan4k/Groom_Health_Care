@@ -29,8 +29,8 @@ function News() {
       {data.map((item) => (
         <div key={item.id} className='card1 flex flex-col justify-center items-center bg-[#007A7433]'>
           <img  src={`http://localhost:4000/images/${item.image}`}  alt="news" className='w-full'/>
-          <h2 className='title text-black font-bold text-2xl'>{item.title}</h2>
-          <p className='content font-semibold text-center w-[90%]'>{truncateText(item.content)}</p>
+          <h2 className='title text-black mt-3 font-bold text-2xl'>{item.title}</h2>
+          <p className='content my-5 text-center w-[90%]'>{truncateText(item.content)}</p>
           <Link to='/news-detail' state={{content:item.content, title:item.title}} className='text-[#0A8FFF] text-xl'>Read More <span className='inline-block'><img src='/images/up.png' alt="" /></span></Link>
         </div>
       ))}

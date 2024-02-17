@@ -26,7 +26,7 @@ function StaffSection() {
     <div  className='flex flex-col justify-center items-center'>
         <h2 className='text-3xl font-bold'>Our Staff</h2>
         <div className='flex flex-col sm:mt-[5%] sm:flex-row justify-center items-center'>
-          <div className='mx-[5%]'> <LefSideCards
+          <div className='sm:mx-[5%] mx-[2%] sm:mt-[5%] mt-[35%] '> <LefSideCards
           title={data[0]?.title}
           name={data[0]?.name}
           experience={data[0]?.experience}
@@ -34,7 +34,7 @@ function StaffSection() {
 
           /></div>
             
-          <div className='mx-[5%] mt-[25%] sm:mt-[20%]'><RightSideCards
+          <div className='mx-[5%] mt-[30%] sm:mt-[20%]'><RightSideCards
           
           title={data[1]?.title}
           name={data[1]?.name}
@@ -42,15 +42,15 @@ function StaffSection() {
           description ={data[1]?.description}
           /> </div>
         </div>
-        <div className='flex flex-col sm:flex-row justify-center items-center'>
-          <div className='mx-[5%] mt-[25%] sm:-mt-[15%]'> <LefSideCards
+        <div className='flex flex-col sm:flex-row justify-center items-center '>
+          <div className='sm:mx-[5%] mx-[2%] mt-[40%] sm:mt-[-5%] '> <LefSideCards
            title={data[2]?.title}
            name={data[2]?.name}
            experience={data[2]?.experience}
            description ={data[2]?.description}
             /></div>
             
-          <div className='mx-[5%] mb-[10%] mt-[25%] sm:mt-[15%]'><RightSideCards 
+          <div className='mx-[2%] mb-[10%] mt-[30%] sm:mt-[20%]'><RightSideCards 
            title={data[3]?.title}
            name={data[3]?.name}
            experience={data[3]?.experience}

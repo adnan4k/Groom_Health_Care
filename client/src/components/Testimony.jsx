@@ -42,12 +42,38 @@ function Testimony() {
       <div className="ft-slick__dots--custom">
         <div className="loading" />
       </div>
-    )
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   
   return (
     <div className="testimonial bg-[#AFFCF833] mb-[3%] ">
-      <div className="w-[90%] ml-[5%] items-center justify-center py-10">
+      <div className="w-[90%] ml-[5%] items-center justify-center py-10 mx-2 sm:mx-14">
         <Slider {...settings}>{data.map((item) => (
           <div className="p-4 w grid grid-cols-1 sm:grid sm:grid-cols-3  ">
             <div className=" bg-white p-5 rounded-lg shadow-lg">

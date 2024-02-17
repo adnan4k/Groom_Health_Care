@@ -11,6 +11,7 @@ import News from '../components/News'
 import Contact from '../sections/Contact'
 import Footer from '../sections/Footer'
 import SimpleSlider from '../components/Testimony'
+import Values from '../sections/Values'
 
 function Home() {
   return (
@@ -32,6 +33,9 @@ function Home() {
       </div>
       <div>
       <Fact />
+      </div>
+      <div>
+        {/* <Values /> */}
       </div>
       <div>
       <Sertification />
