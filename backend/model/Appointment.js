@@ -25,6 +25,12 @@ const NewsSchema = new mongoose.Schema({
     reason:{
         type:String
     },
+    gender:{
+        type:String
+    },
+    age:{
+        type:String
+    },
     user:{
         type:mongoose.Types.ObjectId,
         ref:"User"

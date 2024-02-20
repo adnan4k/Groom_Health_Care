@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ContactInfo = ({ info }) => (
-  <div className='flex mx-20 my-10'>
+  <div className='flex mx-10 my-10'>
     <div className='flex '>
     <img src={info.icon} alt="location" />
     <h4 className='text-xl ml-10'>{info.location}</h4>
@@ -28,21 +28,77 @@ function Contact() {
     },
   ];
 
+   const [formData,setformData] = useState({
+    name:'',
+    email:'',
+    phone:'',
+    message:'',
+   })
+
+   const handleChange = e =>{
+         const{name,value}  = e.target
+         setformData({
+          ...formData,
+          [name]:value
+         })
+         console.log(formData)
+   }
+
+   const handleSubmit = (e)=>{
+    e.preventDefault();
+   }
   return (
     <div>
       <h1 className='my-[5%] text-3xl text-black font-bold flex justify-center items-center '>Contact</h1>
-    <div className='flex flex-col sm:flex sm:flex-row  justify-center items-center'>
-      <div>
+    <div className='flex flex-col  justify-center items-center'>
+        <div className='flex flex-col sm:flex sm:flex-row justify-center items-center sm:w-[1000px]'>
+      <div className='flex flex-col w-full sm:w-[500px]'>
         {contactDetails.map((detail) => (
           <ContactInfo key={detail.id} info={detail} />
         ))}
       </div>
+        <div className='flex flex-col w-full sm:w-[500px]'>
+          <h1 className='text-3xl text-black font-semibold '>Get in touch</h1>
+          <input onChange={handleChange} value={formData.name} 
+ 
+            class="w-full mt-5 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            type="text"
+          name='name'
+          id='name'
+          placeholder='Name'/>
+          <input onChange={handleChange} value={formData.email} 
+           class="w-full mt-5 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
+           type="email" 
+           name='email' 
+           id='email'  
+           placeholder='Email'/>
+
+          <input onChange={handleChange}
+           value={formData.phone} 
+          class="w-full mt-5 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          type="phone" 
+          name='phone' 
+          id='phone'  
+          placeholder='Phone'/>
+          <textarea  onChange={handleChange}
+           placeholder='Message'
+          value={formData.message}
+          className="w-full mt-5 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
+          name="message" id="message" cols="30" rows="5"></textarea>
+          <button value={formData.message}
+          class="hover:shadow-form w-full mt-5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                Send Message
+              </button>
+        </div>
+    </div>  
       <div>
       <div>
       <iframe 
   title="Groom Health and Social Service Location Map"
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125710.01520918953!2d34.43587668819603!3d10.063153200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x165601702d830919%3A0x1ae01d5628ea4445!2sGroom%20Health%20and%20Social%20Service!5e0!3m2!1sen!2set!4v1707476752419!5m2!1sen!2set"
-  className="w-full sm:w-[600px] h-[450px] sm:h-[450px] border-0"
+  className="w-full mt-5 sm:w-[1200px] h-[450px] sm:h-[450px] border-0"
   allowFullScreen=""
   loading="lazy"
   referrerPolicy="no-referrer-when-downgrade">

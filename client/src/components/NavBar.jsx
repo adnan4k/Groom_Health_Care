@@ -9,7 +9,7 @@ function NavBar() {
   return (
     <Layout>
     <div className='z-0'>
-<nav className="bg-white border-gray-200 dark:bg-gray-900 z-0">
+<nav className="bg-white border-gray-200 dark:bg-gray-900 z-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/images/groom-logo.png" className="h-16 z-50" alt="groom logo" />
@@ -45,13 +45,7 @@ function NavBar() {
             <li>
               <a href='#contact' className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
             </li>
-            <li  className='z-50'>
-            <button className='bg-[#0F8EF8] text-white text-sm rounded-xl px-4 py-2 -mt-2 z-50'>
-            <span><img src="/images/call.png" className='h-4 inline-block pr-2 ' alt="call" /></span>
-            EMERGENCY CALL
-            </button>
-              {/* <Link to='/contact-section' className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</Link> */}
-            </li>
+          
             <li className='z-50'>
               <Link to='/login'>
             <button className='bg-[#0F8EF8] text-white text-sm mt-2 rounded-xl px-4 py-2 z-50 sm:-mt-2'>
