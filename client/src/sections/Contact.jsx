@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 const ContactInfo = ({ info }) => (
   <div className='flex mx-10 my-10'>
     <div className='flex '>
@@ -34,19 +34,53 @@ function Contact() {
     phone:'',
     message:'',
    })
-
+   const [notification,setNotification] = useState('')
+   const [button,setButton] = useState('Send Message')
    const handleChange = e =>{
          const{name,value}  = e.target
          setformData({
           ...formData,
           [name]:value
          })
-         console.log(formData)
+        //  console.log(formData)
    }
-
-   const handleSubmit = (e)=>{
+  
+   let response
+   const handleSubmit = async(e)=>{
     e.preventDefault();
+    setButton('Sending Message ...')
+    try {
+        response = await axios.post('http://localhost:4000/user/contact',formData)
+       console.log(response.status)
+       if(response.status === 200){
+        setNotification('Message Sent successfully')
+        setButton('Sent Message')
+       }
+       setformData({
+        name:'',
+        email:'',
+        phone:'',
+        message:'',
+       })
+
+    } catch (error) {
+      setNotification('Message failed')
+      setButton('Send Message')
+      console.log(error)
+    }
+
    }
+   useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification('');
+        setButton('Send Message')
+      }, 3000);
+
+      // Cleanup function to clear the timer if the component unmounts
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
   return (
     <div>
       <h1 className='my-[5%] text-3xl text-black font-bold flex justify-center items-center '>Contact</h1>
@@ -58,7 +92,11 @@ function Contact() {
         ))}
       </div>
         <div className='flex flex-col w-full sm:w-[500px]'>
-          <h1 className='text-3xl text-black font-semibold '>Get in touch</h1>
+          <h1 className='text-3xl text-black font-semibold items-center justify-center'>Get in touch</h1>
+          <span>
+            {notification&&<p className='text-sm text-green-400 justify-center items-center'>{notification}</p>}
+          </span>
+          <form action="POST" onSubmit={handleSubmit}>
           <input onChange={handleChange} value={formData.name} 
  
             class="w-full mt-5 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -87,10 +125,11 @@ function Contact() {
           className="w-full mt-5 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 
           name="message" id="message" cols="30" rows="5"></textarea>
-          <button value={formData.message}
+          <button 
           class="hover:shadow-form w-full mt-5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Send Message
+                {button}
               </button>
+              </form>
         </div>
     </div>  
       <div>

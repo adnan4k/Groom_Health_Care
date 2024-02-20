@@ -37,18 +37,8 @@ function Home() {
        className=''>
       <HeroSection />
       </div>
-      <div  data-aos="fade-up"
-       id='service'>
-      <Services />
-      </div>
-      <div  data-aos="fade-up"
-       id='staff'>
-      <StaffSection />
-      </div>
-      <div  data-aos="fade-up"
-       id='about'>
-      <AboutSection />
-      </div>
+  
+     
       <div  data-aos="fade-up"
        className=''>
       <Fact />
@@ -70,10 +60,7 @@ function Home() {
       <h2 className='flex my-[7%] text-3xl font-bold text-black justify-center items-center '>Testimonial</h2>
       <SimpleSlider />
       </div>
-      <div  data-aos="fade-up"
-       id='contact'>
-      <Contact />
-      </div>
+      
       <Footer />
     </div>
   )

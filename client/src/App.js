@@ -1,4 +1,3 @@
-import Admin from "./admin/page/Admin";
 import Service from "./admin/page/Service";
 import Staff from "./admin/page/Staff";
 import News from "./admin/page/News";
@@ -14,10 +13,10 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import AppointmentTable from "./admin/tables/AppointmentTable";
 import NewsDetail from "./pages/NewsDetail";
-import StaffSection from "./sections/StaffSection";
-import Services from "./sections/Services";
-import Contact from "./sections/Contact";
-import AboutSection from "./sections/AboutSection";
+import AboutPage from "./pages/AboutPage";
+import ServicePage from "./pages/ServicePage";
+import StaffPage from "./pages/StaffPage";
+import ContactPage from "./pages/ContactPage";
 
 
 function App() {
@@ -40,9 +39,10 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/news-detail" element={<NewsDetail/>} />
         <Route path="/appointment-details" element={<AppointmentTable/>} />
-        <Route path="/section-section" element={<StaffSection/>} />
-        <Route path="/service-section" element={<Services/>} />
-        <Route path="/about-section" element={<AboutSection/>} />
+        <Route path="/staff" element={<StaffPage/>} />
+        <Route path="/service" element={<ServicePage/>} />
+        <Route path="/about" element={<AboutPage/>} />
+        <Route path="/contact" element={<ContactPage/>} />
       </Routes>
     </BrowserRouter>    </div>
   );
