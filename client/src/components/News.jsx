@@ -25,7 +25,7 @@ function News() {
   return (
     <div className='justify-center items-center'>
       <h1 className='text-center text-3xl font-bold my-[3%] '>Article and News</h1>
-    <div className='grid  sm:grid-cols-3 justify-center items-center ml-[2%] gap-10 w-[95%] '>
+    <div className='grid  sm:grid-cols-3 justify-center items-center ml-[2.5%] gap-10 w-[95%] '>
       {data.map((item) => (
         <div key={item.id} className='card1 flex flex-col justify-center items-center bg-[#007A7433]'>
           <img  src={`http://localhost:4000/images/${item.image}`}  alt="news" className='w-full'/>

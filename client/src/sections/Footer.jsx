@@ -6,7 +6,7 @@ function Footer() {
         {/* <h1>hello mother fucker</h1> */}
         <div className='text-white'>
           <img src="/images/footer.png" className='' alt="logo of groom" />
-          <h3 className='font-semibold text-lg'>Groom Health and Social Service</h3>
+          <h3 className='font-semibold text-lg'>Expertise Solutions for Health</h3>
         </div>
         <ul className='ml-10 mt-0 sm:mt-[-50%]'>
           <li className='text-2xl text-white font-medium '>Important Links</li>

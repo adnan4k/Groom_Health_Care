@@ -18,13 +18,13 @@ function Contact() {
     },
     {
       id: 2,
-      icon: "/images/location.png",
-      location: "Nairobi Kenya",
+      icon: "/images/phone.png",
+      location: "+2512520540",
     },
     {
       id: 3,
-      icon: "/images/location.png",
-      location: "Lagos Nigeria",
+      icon: "/images/email.png",
+      location: "groomhealth@gmail.com",
     },
   ];
 
@@ -82,17 +82,17 @@ function Contact() {
     }
   }, [notification]);
   return (
-    <div>
-      <h1 className='my-[5%] text-3xl text-black font-bold flex justify-center items-center '>Contact</h1>
+    <div >
+      <h1 className='my-[5%] text-[35px] text-black font-bold flex justify-center items-center '>Get in touch</h1>
     <div className='flex flex-col  justify-center items-center'>
-        <div className='flex flex-col sm:flex sm:flex-row justify-center items-center sm:w-[1000px]'>
+        <div className='flex flex-col sm:flex sm:flex-row justify-center items-center sm:w-[1000px] '>
       <div className='flex flex-col w-full sm:w-[500px]'>
         {contactDetails.map((detail) => (
           <ContactInfo key={detail.id} info={detail} />
         ))}
       </div>
         <div className='flex flex-col w-full sm:w-[500px]'>
-          <h1 className='text-3xl text-black font-semibold items-center justify-center'>Get in touch</h1>
+          {/* <h1 className='text-3xl text-black font-semibold items-center justify-center'></h1> */}
           <span>
             {notification&&<p className='text-sm text-green-400 justify-center items-center'>{notification}</p>}
           </span>

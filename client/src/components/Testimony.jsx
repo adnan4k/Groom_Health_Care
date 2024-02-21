@@ -72,7 +72,7 @@ function Testimony() {
   };
   
   return (
-    <div className="testimonial bg-[#AFFCF833] mb-[3%] ">
+    <div className="testimonial bg-[#17a49d33] mb-[3%] ">
       <div className="w-[90%] ml-[5%] items-center justify-center py-10 mx-2 sm:mx-14">
         <Slider {...settings}>{data.map((item) => (
           <div className="p-4 w grid grid-cols-1 sm:grid sm:grid-cols-3  ">

@@ -2,7 +2,7 @@ import React from 'react'
 
 function RightSideCards({title,name,description,experience}) {
   return (
-    <div className='flex flex-row rounded-xl bg-[#99F9F433] pb-10'>
+    <div className='flex flex-row rounded-xl bg-[#17a49d33] font-sans  pb-10'>
         <div className='w-1/2 ml-3'>
             <h2 className='text-[20px] font-bold'>{name}</h2>
             <div className='flex flex-col sm:flex-row'>

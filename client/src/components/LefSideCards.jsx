@@ -2,7 +2,7 @@ import React from 'react'
 
 function LefSideCards({title,name,description,experience}) {
   return (
-    <div className='flex pr-20 flex-row rounded-xl bg-[#99F9F433] pb-10'>
+    <div className='flex pr-20 flex-row rounded-xl bg-[#17a49d33] font-sans pb-10'>
         <img src="/images/doctor1.png" alt="female doctor" className='-mt-32 max-w-[60%] h-[20%]'/>
         <div className='w-1/2'>
             <h2 className='text-[20px] font-bold'>{name}</h2>

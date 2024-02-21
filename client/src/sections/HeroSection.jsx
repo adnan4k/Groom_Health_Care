@@ -1,10 +1,9 @@
-import styled from '@emotion/styled';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function HeroSection() {
   // -mt-[10%] -ml-[10%]  bg-gradient-to-b from-cyan-200/20 to-blue-500/10 ... rounded-full
-  const bgImage  = '/images/bg.jpg'
+  const bgImage  = '/images/newEllipse.png'
   const ellipseStyle = {
     background: `url(${bgImage})`,
     backgroundSize: 'cover', // Ensure the image covers the ellipse
@@ -22,10 +21,10 @@ function HeroSection() {
     // height: '700px',
     };
   return (
-    <div className='flex flex-col sm:flex-row' >
-      <div style={ellipseStyle}  className='sm:w-full h-[10px] sm:h-[600px] sm:-ml-[10%] sm:-mt-[10%] z-0'></div>
+    <div className='flex flex-col sm:flex-row bg-[#17a49d33]' >
+      <div style={ellipseStyle}  className='sm:w-full h-[10px] sm:h-[600px] sm:-ml-[10%]  '></div>
       <div class="pt-10  z-50 sm:-mt-0 -mt-[600px] sm:-ml-[40%] ">
-       <div className='containe flex flex-col w-[80%] ml-[10%] justify-center'>
+       <div className='containe flex flex-col w-[80%] ml-[10%] mt-10 justify-center'>
         <h1 className='w-1/2  text-4xl font-bold '>Serving your health needs is our priority</h1>
         <p className='w-[80%] my-[5%] text-lg'> 
           Groom Health Service is a leading company in the healthcare industry, offering up to
@@ -34,22 +33,22 @@ function HeroSection() {
         </p>
 
         <div className='buttons flex flex-row'>
-          <button className=' flex text-nowrap mr-10   sm:w-[200px] sm:text-sm   bg-[#0F8EF8] text-white  rounded-xl px-4 py-2'>
+          <button className=' flex text-nowrap mr-10    sm:text-sm   bg-[#0F8EF8] text-white  rounded-xl px-5 py-2'>
             <span><img src="/images/call.png" className='hidden sm:inline-block h-5 pr-2' alt="call" /></span>
-            EMERGENCY CALL
+            CALL US
             </button>
           {/* <div className='flex flex-grow'></div> */}
-          <Link to='/login' className='inline-block'>
-          <button  className='ml-[90%] px-5 bg-[#0F8EF8] text-white rounded-xl px-4 py-2'>Appointment</button>
+          <Link to='/appointment' className='inline-block'>
+          <button  className='ml-[90%] px-5 bg-[#0F8EF8] text-white rounded-xl  py-2'>Appointment</button>
           </Link>
         </div>
       </div>
       </div>
          <div className='flex flex-grow'></div>
       {/* <div className='w-[45%]   '  style={ellipseStyle}> */}
-        <div className='sm:w-full h-[400px] sm:h-[700px] sm:-mr-[50%] mt-16  sm:-mt-[8%] z-0' style={ellipseStyle1}></div>
-        <div className='w-[55%] sm:ml-0 ml-5 z-50 sm:-mt-10 -mt-[90%]'>
-        <img src="/images/doctor.png" alt="doctor" className='mb-2'/>
+        <div className='sm:w-full h-[400px] sm:h-[700px] sm:-mr-[50%] mt-16  sm:mt-0' style={ellipseStyle1}></div>
+        <div className='w-[55%] sm:ml-0 ml-5 z-50 sm:mt-10 -mt-[90%]'>
+        <img src="/images/mydoctor.png" alt="doctor" className='mb-2'/>
         <div className=''>
         <div className='flex flex-row w-full  sm:py-2 z-50 bg-white sm:bg-white shadow-xl  border-[1px] rounded-lg sm:border-[#0F8EF8]'>
           <div className='card-container mx-4 bg-white w-full z-50 '>
