@@ -20,7 +20,9 @@ function Services() {
     fetchData();
   }, []);
 
-
+  const truncateText = (text, maxLength = 250) => {
+    return text.length > maxLength ? text.substring(0, maxLength) + '' : text;
+  };
   return (
     <div className='flex flex-col justify-center items-center'>
       <h2 className='text-black text-3xl my-10 font-bold'>Our Services</h2>
@@ -29,7 +31,7 @@ function Services() {
           <div key={index} className='flex flex-col items-center justify-center m-5  p-5 rounded-2xl bg-[#17a49d33] font-sans '>
             <img src={`http://localhost:4000/images/${service.image}`} alt={service.title} className='rounded-sm' />
             <h3 className='items-center m-5 text-xl text-center font-semibold'>{service.title}</h3>
-            <p className='text-center'>{service.description}</p>
+            <p className='text-center'>{truncateText(service.description)}</p>
           </div>
         ))}
       </div>
