@@ -40,11 +40,11 @@ function FactItem({ number,image, description }) {
 
 function Fact() {
   const facts = [
-    { id: 1, number: '1200+',image:'/images/free_man.png', description: 'Patients' },
-    { id: 2, number: '300+',image:'/images/female-doctor.png', description: 'Surgeries' },
-    { id: 3, number: '50+',image:'/images/free_man.png', description: 'Specialists' },
-    { id: 4, number: '200+',image:'/images/doctor12.png', description: 'Clinics' },
-    { id: 5, number: '150+',image:'/images/open.png', description: 'Awards' },
+    { id: 1, number: '1200+',image:'/images/mdi_patient.png', description: 'Patients' },
+    { id: 2, number: '20+',image:'/images/healthicons_doctor-male.png', description: 'Doctors' },
+    { id: 3, number: '10+',image:'/images/female-doctor.png', description: 'Nurses' },
+    { id: 4, number: '200+',image:'/images/free_man.png', description: 'Trainers' },
+    { id: 5, number: '150+',image:'/images/free_man.png', description: 'Mentors' },
   ];
   return (
     <div className="flex justify-center items-center mt-10 ml-5 w-full">
