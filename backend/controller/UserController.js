@@ -80,7 +80,7 @@ async function sendEmailToAdminForContact(user, email) {
 
     let info = await transporter.sendMail({
         from: email,
-        to: "fayomuhe5@gmail.com",
+        to: "grooming1st@gmail.com",
         subject: "New message arrived ",
         text: `a New message has arrived: ${JSON.stringify(user)}`,
         html: `<b>a New message has arrived:</b> <pre>${JSON.stringify(user, null, 2)}</pre>`,
