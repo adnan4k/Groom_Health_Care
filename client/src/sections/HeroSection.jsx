@@ -39,7 +39,7 @@ function HeroSection() {
             </button>
           {/* <div className='flex flex-grow'></div> */}
           <Link to='/appointment' className='inline-block'>
-          <button  className='ml-[90%] px-5 bg-[#0F8EF8] text-white rounded-xl  py-2'>Appointment</button>
+          <button  className='ml-[90%] px-5 bg-[#0F8EF8] text-white rounded-xl ml-20 sm:mr-0 py-2'>Appointment</button>
           </Link>
         </div>
       </div>

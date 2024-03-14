@@ -23,8 +23,8 @@ function News() {
   }, [row,index]);
 
   const handleChange = (e) => {
-    const { title, value } = e.target;
-    setFormData(prev => ({ ...prev, [title]: value }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
 
   };
 
