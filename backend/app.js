@@ -1,4 +1,3 @@
-import mongoose from "mongoose"
 import express from "express"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
@@ -10,6 +9,7 @@ import StaffRoutes from "./routes/StaffRoute.js"
 import TestimonyRoutes from "./routes/TestimonyRoute.js"
 import path from "path"
 import UserRoutes from "./routes/UserRoute.js"
+import sequilize from "./db.js"
 
 
 
@@ -29,7 +29,8 @@ const storage = multer.diskStorage({
   app.use(express.json());
   app.use(bodyParser.json());
   app.use(express.static('public'))
-//   app.use(express.urlencoded({extended:true}));
+  dotenv.config();
+  //   app.use(express.urlencoded({extended:true}));
   app.use('/images',express.static('images'))
 
 //routes
@@ -39,12 +40,13 @@ const storage = multer.diskStorage({
   app.use('/testimony',upload.single('image'),TestimonyRoutes)
   app.use('/user',UserRoutes)
 
-mongoose.connect("mongodb://127.0.0.1:27017/groom_health_care")
+  sequilize.authenticate()
   .then(() => {
-    app.listen(4000, () => {
-      console.log("App is listening on port", 4000);
+    console.log('Connection has been established successfully.');
+    app.listen(process.env.PORT, () => {
+      console.log(`App is listening on port ${process.env.PORT}`);
     });
   })
-  .catch((error) => {
-    console.error("Error connecting to MongoDB:", error);
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
   });
