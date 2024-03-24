@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
+import { DataTypes } from 'sequelize';
+import sequelize from '../db';
 
-const NewsSchema = new mongoose.Schema({
-    title:{
-        type:String
+const News = sequelize.define('News', {
+    title: {
+        type: DataTypes.STRING,
     },
-    content:{
-        type:String
+    content: {
+        type: DataTypes.STRING,
     },
-    image:{
-        type:String
+    image: {
+        type: DataTypes.STRING,
     }
-})
+});
 
-export const News = mongoose.model('News', NewsSchema);
-
+export default News;

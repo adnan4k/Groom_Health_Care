@@ -1,22 +1,22 @@
-import mongoose from "mongoose";
+import { DataTypes } from 'sequelize';
+import sequelize from '../db';
 
-const StaffSchema = new mongoose.Schema({
-    title:{
-        type:String
+const Staff = sequelize.define('Staff', {
+    title: {
+        type: DataTypes.STRING,
     },
-    name:{
-        type:String
+    name: {
+        type: DataTypes.STRING,
     },
-    experience:{
-        type:Number
+    experience: {
+        type: DataTypes.INTEGER,
     },
-    description:{
-        type:String
+    description: {
+        type: DataTypes.STRING,
     },
-    image:{
-        type:String
+    image: {
+        type: DataTypes.STRING,
     }
-})
+});
 
-export const Staff = mongoose.model('Staff', StaffSchema);
-
+export default Staff;

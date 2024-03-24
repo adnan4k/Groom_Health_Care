@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
+import { DataTypes } from 'sequelize';
+import sequelize from '../db';
 
-const TestimonySchema = new mongoose.Schema({
-    name:{
-        type:String
+const Testimony = sequelize.define('Testimony', {
+    name: {
+        type: DataTypes.STRING,
     },
-    description:{
-        type:String
+    description: {
+        type: DataTypes.STRING,
     },
-    image:{
-        type:String
+    image: {
+        type: DataTypes.STRING,
     }
-})
+});
 
-export const Testimony = mongoose.model('Testimony', TestimonySchema);
-
+export default Testimony;

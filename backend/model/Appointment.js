@@ -1,42 +1,44 @@
-import mongoose from "mongoose";
+import { Sequelize, DataTypes } from 'sequelize';
+import sequelize from '../db'; // Assuming this exports a Sequelize instance
 
-const NewsSchema = new mongoose.Schema({
-    name:{
-        type:String
+const Appointment = sequelize.define('Appointment', {
+    name: {
+        type: DataTypes.STRING,
     },
-    phone:{
-        type:String
+    phone: {
+        type: DataTypes.STRING,
     },
-    email:{
-        type:String
+    email: {
+        type: DataTypes.STRING,
     },
-    date:{
-        type:String
+    date: {
+        type: DataTypes.STRING, // Consider using DataTypes.DATEONLY for actual date fields
     },
-    time:{
-        type:String
+    time: {
+        type: DataTypes.STRING, // Consider changing to DataTypes.TIME if you need to store only time
     },
-    city:{
-        type:String
+    city: {
+        type: DataTypes.STRING,
     },
-    state:{
-        type:String
+    state: {
+        type: DataTypes.STRING,
     },
-    reason:{
-        type:String
+    reason: {
+        type: DataTypes.STRING,
     },
-    gender:{
-        type:String
+    gender: {
+        type: DataTypes.STRING,
     },
-    age:{
-        type:String
+    age: {
+        type: DataTypes.STRING, 
     },
-    user:{
-        type:mongoose.Types.ObjectId,
-        ref:"User"
+    userId: {
+        type: DataTypes.INTEGER, 
+        references: {
+            model: 'Users',
+            key: 'id', 
+        }
     }
+});
 
-})
-
-export const Appointment = mongoose.model('Appointment', NewsSchema);
-
+export default Appointment;
