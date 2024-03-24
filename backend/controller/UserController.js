@@ -1,17 +1,18 @@
 import { Appointment } from "../model/Appointment.js";
 import nodemailer from 'nodemailer';
 import { User } from "../model/User.js";
+import { where } from "sequelize";
 
 export const signup = async (req, res) => {
     const { email, name, role, password } = req.body;
 
-    const check = await User.findOne({ email: email });
+    const check = await User.findOne({where:{ email: email }});
 
     if (check) {
         res.status(400).json("exist");
     } else {
         try {
-            const user = new User({
+            const user = new User.create({
                 email: email,
                 name: name,
                 password: password,
@@ -33,7 +34,7 @@ export const login = async (req, res) => {
         return res.json({ message: 'provide credential' });
     }
     try {
-        const user = await User.findOne({ email: email });
+        const user = await User.findOne({where:{ email: email }});
         if (!user) {
             return res.status(400).json({ message: "notfound" });
         }
@@ -100,7 +101,7 @@ try {
 export const makeAppointment = async (req, res) => {
     const appointmentDetails = req.body;
     try {
-        const userAppointment = new Appointment(appointmentDetails);
+        const userAppointment = new Appointment.create(appointmentDetails);
         const savedAppointment = await userAppointment.save();
         if (savedAppointment) {
             const senderEmail = appointmentDetails.email;
@@ -117,7 +118,7 @@ export const makeAppointment = async (req, res) => {
 
 export const getAppointment = async (req, res) => {
     try {
-        const appointment = await Appointment.find();
+        const appointment = await Appointment.findAll();
         if (appointment) {
             res.status(200).json({ appointment });
         } else {

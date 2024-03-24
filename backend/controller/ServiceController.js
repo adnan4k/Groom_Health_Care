@@ -1,92 +1,81 @@
-import { Service } from "../model/Service.js";
+import Service from "../model/Service.js"; // Assuming Service is now a Sequelize model
 
-export const createService = async (req,res)=>{
-    const {
-        title,
-        image,
-        description,
-    } = req.body;
-    // console.log(title,image,description)
+export const createService = async (req, res) => {
+    const { title, description } = req.body;
     try {
         const updateData = {
             title: title,
             description: description,
         };
-        
-        if (req.file) {
-            updateData.image = req.file.filename;
-        }
-const service = new Service (updateData)
-        const savedService = await service.save();
 
-        if (!savedService) {
-            return res.status(400).json({ message: "cannot be created " });
-          }
-          return res.status(201).json({savedService});
-      
+        if (req.file) {
+            updateData.image = req.file.filename; // Ensure you handle file uploads similarly
+        }
+
+        const savedService = await Service.create(updateData);
+
+        return res.status(201).json({ savedService });
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        return res.status(500).json({ message: "An error occurred" });
     }
 }
 
+export const updateService = async (req, res) => {
+    const { title, description } = req.body;
+    const { id } = req.params;
 
-
-
-export const updateService = async(req,res) =>{
-    const{title,description} = req.body
-    const {id} = req.params
-      
     try {
-      
         const updateData = {
             title: title,
             description: description,
         };
-        
+
         if (req.file) {
             updateData.image = req.file.filename;
         }
-        
-        const service = await Service.findByIdAndUpdate(id, updateData, { new: true });
-        
-        if(service){
-            return res.status(200).json({message:'service updated successfully'})
-        }else{
-            return res.status(500).json({message:'something went wrong'})
+
+        const [updated] = await Service.update(updateData, {
+            where: { id: id }
+        });
+
+        if (updated) {
+            const updatedService = await Service.findByPk(id);
+            return res.status(200).json({ message: 'Service updated successfully', service: updatedService });
+        } else {
+            return res.status(404).json({ message: 'Service not found' });
         }
-     } catch (error) {
-        console.log(error,)
-        return res.status(500).json(error)
-     }
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
+    }
 }
 
-
-
-export const allService = async(req,res) =>{
-    let service;
+export const allService = async (req, res) => {
     try {
-       service = await Service.find()
+        const service = await Service.findAll();
+        return res.status(200).json(service);
     } catch (error) {
-        return res.status(500).json({message:"server error"})
+        return res.status(500).json({ message: "Server error" });
     }
-    if(!service){
-        return res.status(404).json({message:"no Service"})
-    }
-    return res.status(200).json(service);
 }
 
-
-export const deleteService = async(req,res) =>{
-    const id = req.params.id 
+export const deleteService = async (req, res) => {
+    const { id } = req.params;
     try {
-        const deleted = await Service.findByIdAndDelete(id);
-        if(!deleted){
-            return res.json({message:"Service  doesn't exist"})
+        const deleted = await Service.destroy({
+            where: { id: id }
+        });
+
+        if (deleted) {
+            return res.status(200).json({ message: "Service deleted" });
+        } else {
+            return res.status(404).json({ message: "Service doesn't exist" });
         }
-            
- return res.status(200).json({message:"Service deleted"})
+
     } catch (error) {
-        return res.status(500).json(error)
+        return res.status(500).json(error);
     }
 }
