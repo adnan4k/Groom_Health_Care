@@ -12,5 +12,5 @@ const News = sequelize.define('News', {
         type: DataTypes.STRING,
     }
 });
- News.sync({force:true})
+//  News.sync({force:true})
 export default News;

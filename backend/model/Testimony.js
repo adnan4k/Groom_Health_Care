@@ -12,5 +12,5 @@ const Testimony = sequelize.define('Testimony', {
         type: DataTypes.STRING,
     }
 });
-Testimony.sync({force:true})
+// Testimony.sync({force:true})
 export default Testimony;

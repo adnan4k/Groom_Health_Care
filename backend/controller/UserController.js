@@ -5,22 +5,18 @@ import { where } from "sequelize";
 
 export const signup = async (req, res) => {
     const { email, name, role, password } = req.body;
- console.log(req.body,'body')
-    const check = await User.findOne({where:{ email: email }});
+//  console.log(req.body,'body')
+    const check = await User.findAll({where:{ email: email }});
 
-    if (check) {
-        res.status(400).json("exist");
+    if (check.length !== 0) {
+        // console.log(check,'in the chcke')
+        return res.status(400).json("exist");
     } else {
         try {
-            const user =  User.create({
-                email: email,
-                name: name,
-                password: password,
-                role: role
-            });
-
-            const savedUser = await user.save();
-            res.status(201).json({ savedUser });
+            const user = await User.create(req.body);
+            // console.log(user,'saved')
+            // const savedUser = await user.save();
+            res.status(201).json(user);
         } catch (error) {
             console.log(error)
             res.json(error);
@@ -104,13 +100,13 @@ export const makeAppointment = async (req, res) => {
     const appointmentDetails = req.body;
     // console.log(appointmentDetails,'here')
     try {
-        const userAppointment = new Appointment.create(appointmentDetails);
-        const savedAppointment = await userAppointment.save();
-        if (savedAppointment) {
+        const userAppointment = await  Appointment.create(appointmentDetails);
+        // const savedAppointment = await userAppointment.save();
+        if (userAppointment) {
             const senderEmail = appointmentDetails.email;
             await sendEmailToAdmin(appointmentDetails, senderEmail);
 
-            res.status(201).json({ savedAppointment });
+            res.status(201).json(userAppointment);
         } else {
             res.status(500).json("error occurred");
         }

@@ -26,7 +26,7 @@ function Login() {
                  try {
 
                     const response = await axios.post('http://localhost:4000/user/login',formData)
-                  console.log("form submission response",response.data.user.role)
+                  console.log("form submission response",response)
                   if(response.data.user.role === 'admin'){
                     navigate('/admin/news/display')
                   }else if(response.data.user.role === ''){
@@ -44,9 +44,9 @@ function Login() {
                  
                   
                  } catch (error) {
-                  console.log(error)
+                  setError(error.response.data.message)
+                  console.log(error,'in the catch')
                  }
-            
       };
   return (
     <div>

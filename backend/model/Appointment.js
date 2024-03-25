@@ -40,6 +40,6 @@ const Appointment = sequelize.define('Appointment', {
     //     }
     // }
 });
-Appointment.sync({force:true})
+// Appointment.sync({force:true})
 
 export default Appointment;

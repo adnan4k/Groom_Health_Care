@@ -18,6 +18,6 @@ const Staff = sequelize.define('Staff', {
         type: DataTypes.STRING,
     }
 });
-Staff.sync({force:true})
+// Staff.sync({force:true})
 
 export default Staff;
