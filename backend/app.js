@@ -39,8 +39,9 @@ const storage = multer.diskStorage({
   app.use('/staff',upload.single('image'),StaffRoutes)
   app.use('/testimony',upload.single('image'),TestimonyRoutes)
   app.use('/user',UserRoutes)
-
-  sequilize.authenticate()
+ 
+  try {
+    await sequilize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
     app.listen(process.env.PORT, () => {
@@ -50,3 +51,7 @@ const storage = multer.diskStorage({
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+  } catch (error) {
+    console.log(error)
+  }
+  

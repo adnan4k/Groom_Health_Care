@@ -1,18 +1,18 @@
-import { Appointment } from "../model/Appointment.js";
+import  Appointment  from "../model/Appointment.js";
 import nodemailer from 'nodemailer';
-import { User } from "../model/User.js";
+import  User  from "../model/User.js";
 import { where } from "sequelize";
 
 export const signup = async (req, res) => {
     const { email, name, role, password } = req.body;
-
+ console.log(req.body,'body')
     const check = await User.findOne({where:{ email: email }});
 
     if (check) {
         res.status(400).json("exist");
     } else {
         try {
-            const user = new User.create({
+            const user =  User.create({
                 email: email,
                 name: name,
                 password: password,
@@ -22,6 +22,7 @@ export const signup = async (req, res) => {
             const savedUser = await user.save();
             res.status(201).json({ savedUser });
         } catch (error) {
+            console.log(error)
             res.json(error);
         }
     }
@@ -29,12 +30,13 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
-
+        //   console.log(req.body,'body')
     if (!email && !password) {
         return res.json({ message: 'provide credential' });
     }
     try {
         const user = await User.findOne({where:{ email: email }});
+        console.log(user,'user')
         if (!user) {
             return res.status(400).json({ message: "notfound" });
         }
@@ -100,6 +102,7 @@ try {
 }
 export const makeAppointment = async (req, res) => {
     const appointmentDetails = req.body;
+    // console.log(appointmentDetails,'here')
     try {
         const userAppointment = new Appointment.create(appointmentDetails);
         const savedAppointment = await userAppointment.save();
@@ -112,6 +115,7 @@ export const makeAppointment = async (req, res) => {
             res.status(500).json("error occurred");
         }
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);
     }
 };

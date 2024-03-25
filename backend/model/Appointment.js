@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
-import sequelize from '../db'; // Assuming this exports a Sequelize instance
+import sequelize from '../db.js'; // Assuming this exports a Sequelize instance
 
 const Appointment = sequelize.define('Appointment', {
     name: {
@@ -32,13 +32,14 @@ const Appointment = sequelize.define('Appointment', {
     age: {
         type: DataTypes.STRING, 
     },
-    userId: {
-        type: DataTypes.INTEGER, 
-        references: {
-            model: 'Users',
-            key: 'id', 
-        }
-    }
+    // userId: {
+    //     type: DataTypes.STRING, 
+    //     references: {
+    //         model: 'Users',
+    //         key: 'id', 
+    //     }
+    // }
 });
+Appointment.sync({force:true})
 
 export default Appointment;

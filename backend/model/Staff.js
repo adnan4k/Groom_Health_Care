@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db';
+import sequelize from '../db.js';
 
 const Staff = sequelize.define('Staff', {
     title: {
@@ -18,5 +18,6 @@ const Staff = sequelize.define('Staff', {
         type: DataTypes.STRING,
     }
 });
+Staff.sync({force:true})
 
 export default Staff;

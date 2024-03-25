@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db';
+import sequelize from '../db.js';
 
 const News = sequelize.define('News', {
     title: {
@@ -12,5 +12,5 @@ const News = sequelize.define('News', {
         type: DataTypes.STRING,
     }
 });
-
+ News.sync({force:true})
 export default News;

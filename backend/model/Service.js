@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db';
+import sequelize from '../db.js';
 
 const Service = sequelize.define('Service', {
     title: {
@@ -12,5 +12,6 @@ const Service = sequelize.define('Service', {
         type: DataTypes.STRING,
     }
 });
+Service.sync({force:true})
 
 export default Service;

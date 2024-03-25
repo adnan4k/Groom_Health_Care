@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db';
+import sequelize from '../db.js';
 
 const Testimony = sequelize.define('Testimony', {
     name: {
@@ -12,5 +12,5 @@ const Testimony = sequelize.define('Testimony', {
         type: DataTypes.STRING,
     }
 });
-
+Testimony.sync({force:true})
 export default Testimony;
