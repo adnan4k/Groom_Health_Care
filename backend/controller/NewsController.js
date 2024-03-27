@@ -48,6 +48,7 @@ export const updateNews = async (req, res) => {
 }
 
 export const allNews = async (req, res) => {
+    // console.log('someting here')
     try {
         const news = await News.findAll();
         return res.status(200).json(news);
