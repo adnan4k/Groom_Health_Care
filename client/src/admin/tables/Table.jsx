@@ -47,7 +47,7 @@ function Table({ columns, initialRows,type }) {
                 type==='appointment'? '': (
                <>
            <form action="">
-        <button type='submit' onClick={() => handleDelete(row._id, type)} className="text-blue-500 hover:text-blue-700">
+        <button type='submit' onClick={() => handleDelete(row.id, type)} className="text-blue-500 hover:text-blue-700">
           <DeleteIcon />
         </button>
       </form>

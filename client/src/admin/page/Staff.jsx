@@ -12,12 +12,10 @@ function Staff() {
     name: row ? row[index].name : '',
     experience: row ? row[index].experience : '',
     description: row ? row[index].description : '',
-    // Assuming image handling will be implemented separately
     image: '',
   });
 
   useEffect(() => {
-    // Update local state if row prop changes, for example when editing
     if (row) {
       setFormData({
         title: row[index].title,
