@@ -5,7 +5,7 @@ import axios from 'axios';
 const fetchData = async () => {
   // Example API call
   const response = await axios.get('http://localhost:4000/news/get-news');
-  console.log(response.data)
+  console.log(response)
   return response.data;
 };
 

@@ -20,12 +20,13 @@ function News() {
       });
     }
   }, [row,index]);
-
+  
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { title, value } = e.target;
+    setFormData(prev => ({ ...prev, [title]: value }));
 
   };
+
 
   
   const handleFileChange = (e) => {
