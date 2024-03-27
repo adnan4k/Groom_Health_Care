@@ -77,11 +77,15 @@ export const allTestimony = async(req,res) =>{
 
 export const deleteTestimony = async(req,res) =>{
     const id = req.params.id 
+
     try {
-        const deleted = await Testimony.findByIdAndDelete(id);
+        const deleted = await Testimony.destroy({
+            where: { id: id }
+        });
         if(!deleted){
             return res.json({message:"Testimony  doesn't exist"})
         }
+
             
  return res.status(200).json({message:"Testimony deleted"})
     } catch (error) {

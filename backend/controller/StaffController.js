@@ -85,7 +85,10 @@ export const allStaff = async(req,res) =>{
 export const deleteStaff = async(req,res) =>{
     const id = req.params.id 
     try {
-        const deleted = await Staff.findByIdAndDelete(id);
+        const deleted = await Staff.destroy({
+            where: { id: id }
+        });
+
         if(!deleted){
             return res.json({message:"Staff  doesn't exist"})
         }
