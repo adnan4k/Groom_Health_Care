@@ -57,7 +57,10 @@ export const updateStaff = async(req,res,next) =>{
         if (req.file) {
             updateData.image = req.file.filename;
         }
-    const staff = await Staff.findByIdAndUpdate(id,updateData,{new:true})    
+    const staff = await Staff.update(updateData, {
+        where: { id: id },
+    });
+
     if(!staff){
      return res.status(500).json({message:"error while saving"});
     }

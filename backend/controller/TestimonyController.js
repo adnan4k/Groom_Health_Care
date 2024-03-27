@@ -50,7 +50,10 @@ export const updateTestimony = async(req,res,next) =>{
         if (req.file) {
             updateData.image = req.file.filename;
         }
-    const testimony = await Testimony.findByIdAndUpdate(id,updateData,{new:true})    
+    const testimony = await Testimony.update(updateData, {
+        where: { id: id },
+    });
+
     if(!testimony){
      return res.status(500).json({message:"error while saving"});
     }
