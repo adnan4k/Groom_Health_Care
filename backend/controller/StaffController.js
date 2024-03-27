@@ -36,7 +36,7 @@ const staff = new Staff ({
 
 
 export const updateStaff = async(req,res,next) =>{
- console.log(req.body)
+//  console.log(req.body)
     const {   
         title,
         image,
