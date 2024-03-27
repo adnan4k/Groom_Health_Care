@@ -66,7 +66,7 @@ function Testimony() {
             console.log("Form submission response:", response.data);
         } else {
             
-            const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[index]._id}`, formDataToSend, config);
+            const response = await axios.post(`http://localhost:4000/testimony/edit-testimony/${row[index].id}`, formDataToSend, config);
             console.log("Form submission response:", response.data);
         }
 

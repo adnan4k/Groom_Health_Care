@@ -12,6 +12,7 @@ function Service() {
     // Assuming image handling will be implemented separately
     image: '',
   });
+  console.log(row,index,'row and index')
 
   useEffect(() => {
     if (row) {
@@ -66,7 +67,7 @@ function Service() {
             console.log("Form submission response:", response.data);
         } else {
             
-            const response = await axios.post(`http://localhost:4000/service/edit-service/${row[index]._id}`, formDataToSend, config);
+            const response = await axios.post(`http://localhost:4000/service/edit-service/${row[index].id}`, formDataToSend, config);
             console.log("Form submission response:", response.data);
         }
 

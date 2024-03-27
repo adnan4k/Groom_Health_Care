@@ -12,7 +12,6 @@ function News() {
     // Assuming image handling will be implemented separately
     image: '',
   });
-
   useEffect(() => {
     if (row) {
       setFormData({
@@ -66,7 +65,7 @@ function News() {
             console.log("Form submission response:", response.data);
         } else {
             
-            const response = await axios.post(`http://localhost:4000/news/edit-news/${row[index]._id}`, formDataToSend, config);
+            const response = await axios.post(`http://localhost:4000/news/edit-news/${row[index].id}`, formDataToSend, config);
             console.log("Form submission response:", response.data);
         }
 
@@ -80,9 +79,9 @@ function News() {
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
       <div className="mb-5">
-        <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-9index md:text-2xl dark:text-white">
+        <h2 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-9index md:text-2xl dark:text-white">
           news
-        </h1>
+        </h2>
       </div>
 
       <div className="mb-5">
