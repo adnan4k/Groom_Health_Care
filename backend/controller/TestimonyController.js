@@ -1,6 +1,7 @@
 import  Testimony  from "../model/Testimony.js";
 
 export const createTestimony = async (req,res)=>{
+    // console.log(req.body,'body')
     const {
         name,
         image,
@@ -63,7 +64,7 @@ return res.status(200).json({message:"updated Testimony",testimony})
 export const allTestimony = async(req,res) =>{
     let testimony;
     try {
-       testimony = await Testimony.find()
+       testimony = await Testimony.findAll()
     } catch (error) {
         return res.status(500).json({message:"server error"})
     }

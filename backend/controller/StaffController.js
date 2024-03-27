@@ -36,7 +36,7 @@ const staff = new Staff ({
 
 
 export const updateStaff = async(req,res,next) =>{
-
+ console.log(req.body)
     const {   
         title,
         image,
@@ -71,7 +71,7 @@ return res.status(200).json({message:"updated Staff",staff})
 export const allStaff = async(req,res) =>{
     let staff;
     try {
-       staff = await Staff.find()
+       staff = await Staff.findAll()
     } catch (error) {
         return res.status(500).json({message:"server error"})
     }
