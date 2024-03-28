@@ -12,6 +12,6 @@ const Service = sequelize.define('Service', {
         type: DataTypes.STRING,
     }
 });
-// Service.sync({force:true})
+Service.sync({force:false})
 
 export default Service;

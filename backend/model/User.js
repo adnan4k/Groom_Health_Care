@@ -15,6 +15,6 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
     }
 });
-// User.sync({force:true})
+User.sync({force:false})
 
 export default User;
