@@ -16,7 +16,7 @@ function Testimony() {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/testimony/get-testimony');
+        const response = await axios.get('https://groom-health-care.onrender.com/testimony/get-testimony');
         console.log(response.data[0].image);
         setData(response.data); // Assuming the response data is the array of testimonies
       } catch (error) {
@@ -78,7 +78,7 @@ function Testimony() {
           <div className="p-4 w grid grid-cols-1 sm:grid sm:grid-cols-3  ">
             <div className=" bg-white p-5 rounded-lg shadow-lg">
             <div className="flex flex-row">
-            <img src={`http://localhost:4000/images/${item.image}`} alt={item.name} className="mx-auto" />
+            <img src={`https://groom-health-care.onrender.com/images/${item.image}`} alt={item.name} className="mx-auto" />
             <h2 className="text-center text-xl font-semibold mt-[20%] -ml-[10%] ">{item.name}</h2>
             </div>
             <p className="text-center my-5">{item.description}</p>

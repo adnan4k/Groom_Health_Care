@@ -63,11 +63,11 @@ function Service() {
 
         if (!row) {
             // For creating a new service
-            const response = await axios.post('http://localhost:4000/service/create-service', formDataToSend, config);
+            const response = await axios.post('https://groom-health-care.onrender.com/service/create-service', formDataToSend, config);
             console.log("Form submission response:", response.data);
         } else {
             
-            const response = await axios.post(`http://localhost:4000/service/edit-service/${row[index].id}`, formDataToSend, config);
+            const response = await axios.post(`https://groom-health-care.onrender.com/service/edit-service/${row[index].id}`, formDataToSend, config);
             console.log("Form submission response:", response.data);
         }
 

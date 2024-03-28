@@ -30,7 +30,7 @@ function SignUp() {
         if(formData.password  === formData.password_confirmation){
           console.log(formData,'form is here ')
              try {
-              const response = await axios.post('http://localhost:4000/user/signup',formData)
+              const response = await axios.post('https://groom-health-care.onrender.com/user/signup',formData)
               console.log("form submission response",response.data,response.status,response.statusText)
               console.log(response.status,'mama')
               if(response.data.status === 400){

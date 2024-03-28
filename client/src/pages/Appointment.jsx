@@ -35,7 +35,7 @@ function Appointment() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/user/create-appointment",
+        "https://groom-health-care.onrender.com/user/create-appointment",
         formData
       );
       if (response.data.status === 200 || 201) {

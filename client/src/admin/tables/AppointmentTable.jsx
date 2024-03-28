@@ -5,7 +5,7 @@ import Table from './Table';
 
 const fetchData = async () => {
   // Example API call
-  const response = await axios.get('http://localhost:4000/user/get-appointment');
+  const response = await axios.get('https://groom-health-care.onrender.com/user/get-appointment');
   // console.log(response.data.appointment)
   return response.data.appointment;
 };

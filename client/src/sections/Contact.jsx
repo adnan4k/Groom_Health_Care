@@ -50,7 +50,7 @@ function Contact() {
     e.preventDefault();
     setButton('Sending Message ...')
     try {
-        response = await axios.post('http://localhost:4000/user/contact',formData)
+        response = await axios.post('https://groom-health-care.onrender.com/user/contact',formData)
        console.log(response.status)
        if(response.status === 200){
         setNotification('Message Sent successfully')
