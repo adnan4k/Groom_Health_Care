@@ -31,19 +31,19 @@ function NavBar() {
                         <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block text-white md:w-auto`} id="navbar-default">
                             <ul className="font-medium flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-[#001E36] md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-[#001E36] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li className=''>
-                                    <Link to='/' className={`block py-2 px-3 rounded md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/' ? 'bg-blue-700 text-blue-700' : 'text-white'}`} aria-current="page">Home</Link>
+                                    <Link to='/' className={`block py-2 px-3 rounded md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/' ? ' text-blue-700' : 'text-white'}`} aria-current="page">Home</Link>
                                 </li>
                                 <li className=''>
-                                    <Link to='/about' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/about' ? 'bg-blue-700 text-blue-700' : 'text-white'}`}>About</Link>
+                                    <Link to='/about' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/about' ? ' text-blue-700' : 'text-white'}`}>About</Link>
                                 </li>
                                 <li className=''>
-                                    <Link to='/service' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/service' ? 'bg-blue-700 text-blue-700' : 'text-white'}`}>Services</Link>
+                                    <Link to='/service' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/service' ? ' text-blue-700' : 'text-white'}`}>Services</Link>
                                 </li>
                                 <li className=''>
-                                    <Link to='/staff' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/staff' ? 'bg-blue-700 text-blue-700' : 'text-white'}`}>Our Staff</Link>
+                                    <Link to='/staff' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/staff' ? ' text-blue-700' : 'text-white'}`}>Our Staff</Link>
                                 </li>
                                 <li className=''>
-                                    <Link to='/contact' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/contact' ? 'bg-blue-700 text-blue-700' : 'text-white'}`}>Contact</Link>
+                                    <Link to='/contact' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/contact' ? ' text-blue-700' : 'text-white'}`}>Contact</Link>
                                 </li>
                                 <li className='z-50'>
                                     <Link to='/login'>
