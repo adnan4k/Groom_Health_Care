@@ -78,7 +78,7 @@ function Testimony() {
           <div className="p-4 w grid grid-cols-1 sm:grid sm:grid-cols-3  ">
             <div className=" bg-white p-5 rounded-lg shadow-lg">
             <div className="flex flex-row">
-            <img src={`https://groom-health-care.onrender.com/images/${item.image}`} alt={item.name} className="mx-auto" />
+            <img src={`https://groom-health-care.onrender.com/images/${item.image}`} alt={item.name} className="mx-auto rounded-full " />
             <h2 className="text-center text-xl font-semibold mt-[20%] -ml-[10%] ">{item.name}</h2>
             </div>
             <p className="text-center my-5">{item.description}</p>
