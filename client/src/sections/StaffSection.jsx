@@ -22,7 +22,7 @@ function StaffSection() {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://groom-health-care.onrender.com/staff/get-staff');
+        const response = await axios.get('http://localhost:4000/staff/get-staff');
         console.log(response.data[0].title,'after called');
         setData(response.data); // Assuming the response data is the array of testimonies
       } catch (error) {

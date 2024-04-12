@@ -9,7 +9,7 @@ function Services() {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://groom-health-care.onrender.com/service/get-service');
+        const response = await axios.get('http://localhost:4000/service/get-service');
         // console.log(response.data[0].image);
         setData(response.data); // Assuming the response data is the array of testimonies
       } catch (error) {
@@ -29,7 +29,7 @@ function Services() {
       <div className='container flex flex-col sm:flex-row justify-center items-center'>
         {data.map((service, index) => (
           <div key={index} className='flex flex-col items-center justify-center m-5  p-5 rounded-2xl bg-[#17a49d33] font-sans '>
-            <img src={`https://groom-health-care.onrender.com/images/${service.image}`} alt={service.title} className='rounded-sm' />
+            <img src={`http://localhost:4000/images/${service.image}`} alt={service.title} className='rounded-sm' />
             <h3 className='items-center m-5 text-xl text-center font-semibold'>{service.title}</h3>
             <p className='text-center'>{truncateText(service.description)}</p>
           </div>

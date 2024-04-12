@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const fetchData = async () => {
   // Example API call
-  const response = await axios.get('https://groom-health-care.onrender.com/staff/get-staff')
+  const response = await axios.get('http://localhost:4000/staff/get-staff')
   console.log(response.data)
   return response.data;
 };
@@ -24,7 +24,7 @@ function StaffTable() {
     { 
       key: 'image', 
       label: 'Image', 
-      render: (row) => <img  src={`https://groom-health-care.onrender.com/images/${row.image}`} alt={row.title} style={{ width: '50px' }} /> 
+      render: (row) => <img  src={`http://localhost:4000/images/${row.image}`} alt={row.title} style={{ width: '50px' }} /> 
     },
   ];
       const type = "staff"

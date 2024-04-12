@@ -33,10 +33,12 @@ function HeroSection() {
         </p>
 
         <div className='buttons flex flex-row'>
+          <Link to='/contact' >
           <button className=' flex text-nowrap mr-10    sm:text-sm   bg-[#0F8EF8] text-white  rounded-xl px-5 py-2'>
             <span><img src="/images/call.png" className='hidden sm:inline-block h-5 pr-2' alt="call" /></span>
             CALL US
             </button>
+            </Link>
           {/* <div className='flex flex-grow'></div> */}
           <Link to='/appointment' className='inline-block'>
           <button  className='ml-[90%] px-5 bg-[#0F8EF8] text-white rounded-xl ml-20 sm:mr-0 py-2'>Appointment</button>

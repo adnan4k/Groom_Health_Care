@@ -11,7 +11,7 @@ function NewsDetail() {
         <NavBar />
         <div className='flex flex-col font-medium justify-center items-center'>
             <h1 className='text-2xl my-10 font-bold' >{title}</h1>
-              <img src={`https://groom-health-care.onrender.com/images/${image}`} alt="newsImage" className='mb-5' />
+              <img src={`http://localhost:4000/images/${image}`} alt="newsImage" className='mb-5' />
             <p className='text-lg  w-1/2'>{content}</p>
         </div>
         <Footer />
