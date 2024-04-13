@@ -42,7 +42,7 @@ function Home() {
       <VisionMission/>
       </div>
 
-      <div  data-aos="zoom-in-up"
+      <div
        className=''>
       <Fact />
       </div>
@@ -52,7 +52,7 @@ function Home() {
         {/* <Values /> */}
       </div>
       
-      <div  data-aos="fade-do"
+      <div  
        id='news'>
       <News />
       </div>
