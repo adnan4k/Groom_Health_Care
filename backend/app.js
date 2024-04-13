@@ -10,6 +10,7 @@ import TestimonyRoutes from "./routes/TestimonyRoute.js"
 import path from "path"
 import UserRoutes from "./routes/UserRoute.js"
 import sequilize from "./db.js"
+import subRouter from "./routes/SubRoute.js"
 
 
 
@@ -39,6 +40,7 @@ const storage = multer.diskStorage({
   app.use('/staff',upload.single('image'),StaffRoutes)
   app.use('/testimony',upload.single('image'),TestimonyRoutes)
   app.use('/user',UserRoutes)
+  app.use('/sub',subRouter)
  
   try {
     await sequilize.authenticate()
