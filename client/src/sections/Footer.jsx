@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className='bg-[#001E36] pl-24 grid grid-cols-1 overflow-hidden justify-center items-center w-full mt-[2%] pt-1 p-[5%] sm:grid sm:grid-cols-'>
+    <footer className='bg-[#001E36] pl-24 grid grid-cols-1 overflow-hidden justify-center items-center w-full mt-[2%] pt-1 p-[5%] sm:grid sm:grid-cols-3'>
         {/* <h1>hello mother fucker</h1> */}
         <div className='text-white'>
           <img src="/images/footer.png" className='' alt="logo of groom" />

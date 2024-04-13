@@ -42,7 +42,7 @@ function Home() {
       <VisionMission/>
       </div>
 
-      <div  data-aos="fade-up"
+      <div  data-aos="zoom-in-up"
        className=''>
       <Fact />
       </div>
@@ -58,7 +58,7 @@ function Home() {
       </div>
       <div  
        className=''>
-      <h2 className='flex my-[7%] text-3xl font-bold text-black justify-center items-center '>Testimonial</h2>
+      <h2 className='flex my-[4%] text-3xl font-bold text-black justify-center items-center '>Testimonial</h2>
       <SimpleSlider data-aos="fade-up" />
       </div>
       <div>

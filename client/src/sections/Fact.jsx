@@ -27,7 +27,7 @@ function FactItem({ number,image, description }) {
   const animatedNumber = useAnimatedNumber(number);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center"  >
       <img src={image} alt="Free Man" className="w-24 h-24 sm:-mt-[35%] object-cover" />
       <div className="text-center p-4 -mt-5 rounded-lg">
         <h2 className="font-bold text-xl md:text-3xl">{animatedNumber}+</h2>
