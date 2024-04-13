@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import Aos from 'aos'
 import VisionMission from '../components/VisionMission'
 import AboutSection from '../sections/AboutSection'
+import Subscription from '../sections/Subscription'
 
 
 function Home() {
@@ -50,20 +51,19 @@ function Home() {
        className=''>
         {/* <Values /> */}
       </div>
-      {/* <div  data-aos="fade-up"
-       className=''>
-      <Sertification />
-      </div> */}
+      
       <div  data-aos="fade-do"
        id='news'>
       <News />
       </div>
-      <div  data-aos="fade-up"
+      <div  
        className=''>
       <h2 className='flex my-[7%] text-3xl font-bold text-black justify-center items-center '>Testimonial</h2>
-      <SimpleSlider />
+      <SimpleSlider data-aos="fade-up" />
       </div>
-      
+      <div>
+        <Subscription />
+      </div>
       <Footer />
     </div>
   )

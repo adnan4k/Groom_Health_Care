@@ -18,6 +18,7 @@ import ServicePage from "./pages/ServicePage";
 import StaffPage from "./pages/StaffPage";
 import ContactPage from "./pages/ContactPage";
 import VisionMission from "./components/VisionMission";
+import Subscription from "./sections/Subscription";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/mission-vision" element={<VisionMission/>} />
+        <Route path="/subscription" element={<Subscription/>} />
       </Routes>
     </BrowserRouter>    </div>
   );
