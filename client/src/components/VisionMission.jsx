@@ -6,7 +6,7 @@ function VisionMission() {
       <section class="bg-gray-100 py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-3xl font-extrabold text-gray-900">Our Vision</h2>
-          <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="mt-12 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
             <div>
               <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
                 <svg
@@ -27,7 +27,7 @@ function VisionMission() {
               <div class="mt-5">
                 <h3 class="text-lg font-medium text-gray-900">Mission</h3>
                 <p class="mt-2 text-base text-gray-500">
-                To provide value-added, innovative, and integrated services, along with high-quality healthcare operating systems.
+                To provide value-added, innovative, and integrated services, along with high-quality healthcare operating systems.and other vision that may improve your health status throught our health care
                 </p>
               </div>
             </div>
@@ -61,7 +61,7 @@ function VisionMission() {
                 <h3 class="text-lg font-medium text-gray-900">Vision</h3>
                 <p class="mt-2 text-base text-gray-500">
                 To be a leading company in the healthcare industry, offering up to date support and expertise to improve healthcare access, address public health issues, 
-                and enhance the overall quality of medical care
+                and enhance the overall quality of medical care 
                 </p>
               </div>
             </div>

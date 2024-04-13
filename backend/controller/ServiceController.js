@@ -54,7 +54,6 @@ export const updateService = async (req, res) => {
 }
 
 export const allService = async (req, res) => {
-    console.log('here is service')
     try {
         const service = await Service.findAll();
         return res.status(200).json(service);
