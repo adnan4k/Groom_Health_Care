@@ -19,6 +19,7 @@ import StaffPage from "./pages/StaffPage";
 import ContactPage from "./pages/ContactPage";
 import VisionMission from "./components/VisionMission";
 import Subscription from "./sections/Subscription";
+import SubscriptionTable from "./admin/tables/SubscriptionTable";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/mission-vision" element={<VisionMission/>} />
         <Route path="/subscription" element={<Subscription/>} />
+        <Route path="/sub" element={<SubscriptionTable/>} />
       </Routes>
     </BrowserRouter>    </div>
   );

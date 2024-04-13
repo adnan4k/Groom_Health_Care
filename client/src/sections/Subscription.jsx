@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Subscription() {
     const [emailData, setEmailData] = useState({ email: '' });
+    const [message,setMessage] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
     const handleSubmit = async(e) =>{
@@ -12,6 +13,7 @@ function Subscription() {
             console.log(emailData)
             const response = await axios.post('http://localhost:4000/sub/create-sub', emailData);
             setEmailData({email:""})
+            setMessage('You are subscribed successfully !')
             navigate('/')
                console.log(response.data)
         } catch (error) {
@@ -25,8 +27,26 @@ function Subscription() {
       email: e.target.value, // Assuming you're also updating other fields besides email
     }));
   };
+  
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 3000);
+
+      // Cleanup function to clear the timer if the component unmounts
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
+        <span>
+              {message && (
+                <p className="text-sm text-green-400 justify-center items-center">
+                  {message}
+                </p>
+              )}
+            </span>
       <aside
         className="p-4 my-8 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Subscribe to the Flowbite newsletter"

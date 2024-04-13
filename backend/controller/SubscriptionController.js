@@ -14,9 +14,10 @@ export const addSubscription = async (req, res, next) => {
 export const allSubscription = async (req, res) => {
   // console.log('here is Subscription')
   try {
-    const Subscription = await Subscription.findAll();
-    return res.status(200).json(Subscription);
+    const subscription = await Subscription.findAll();
+    return res.status(200).json(subscription);
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ message: "Server error" });
   }
 };
