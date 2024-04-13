@@ -1,5 +1,5 @@
 import React from "react";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -14,23 +14,20 @@ function Appointment() {
     time: "",
     city: "",
     state: "",
-    age: '',
+    age: "",
     gender: "male",
     reason: "",
   });
-  const[ error, setError ]= useState("");
+  const [error, setError] = useState("");
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]:  type === "radio" ? checked && value : value,
-      
+      [name]: type === "radio" ? checked && value : value,
     });
-    console.log(formData.gender)
+    console.log(formData.gender);
   };
 
-
- 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -65,29 +62,29 @@ function Appointment() {
             )}
           </span>
           <form onSubmit={handleSubmit}>
-            <div class="mb-5">
+            <div className="mb-5">
               <label
-                for="name"
-                class="mb-3 block text-base font-medium text-[#07074D]"
+                htmlFor="name"
+                className="mb-3 block text-base font-medium text-[#07074D]"
               >
-                Full Name
+                Full Name <span className="text-red-500 text-xl">*</span>
               </label>
               <input
-              required
+                required
                 onChange={handleChange}
                 type="text"
                 name="name"
                 id="name"
                 placeholder="Full Name"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
-            <div class="mb-5">
+            <div className="mb-5">
               <label
-                for="phone"
-                class="mb-3 block text-base font-medium text-[#07074D]"
+                htmlFor="phone"
+                className="mb-3 block text-base font-medium text-[#07074D]"
               >
-                Phone Number
+                Phone Number <span className="text-red-500 text-xl">*</span>
               </label>
               <input
                 required
@@ -96,7 +93,7 @@ function Appointment() {
                 name="phone"
                 id="phone"
                 placeholder="Enter your phone number"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
             <div class="mb-5">
@@ -125,7 +122,7 @@ function Appointment() {
                     Date
                   </label>
                   <input
-                  required
+                    required
                     onChange={handleChange}
                     type="date"
                     name="date"
@@ -143,7 +140,7 @@ function Appointment() {
                     Time
                   </label>
                   <input
-                  required
+                    required
                     onChange={handleChange}
                     type="time"
                     name="time"
@@ -161,7 +158,7 @@ function Appointment() {
                     Age
                   </label>
                   <input
-                  required
+                    required
                     onChange={handleChange}
                     type="age"
                     name="age"
@@ -173,35 +170,36 @@ function Appointment() {
                 </div>
               </div>
               <div class="w-full px-3 sm:w-1/2">
-              
                 <div>
-                <label
+                  <label
                     for="time"
                     class="mb-3 block text-base font-medium text-[#07074D]"
                   >
                     Gender
                   </label>
-                   <label htmlFor="male">Male</label>
-                   <input
-                      className="ml-[8%]"
-                     onChange={handleChange}
-                      checked={formData.gender==='male'}
+                  <label htmlFor="male">Male</label>
+                  <input
+                    className="ml-[8%]"
+                    onChange={handleChange}
+                    checked={formData.gender === "male"}
                     type="radio"
-                     name="gender"
-                      value="male" 
-                       id="male"/>
+                    name="gender"
+                    value="male"
+                    id="male"
+                  />
                 </div>
                 <div>
-                   <label htmlFor="female">Female</label>
-                 
-                    <input 
+                  <label htmlFor="female">Female</label>
+
+                  <input
                     className="ml-[3%]"
-                 onChange={handleChange}
-                   checked={formData.gender==='female'}
-                   type="radio" 
-                   name="gender" 
-                   value="female"  
-                   id="female"/>
+                    onChange={handleChange}
+                    checked={formData.gender === "female"}
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    id="female"
+                  />
                 </div>
               </div>
             </div>
@@ -214,7 +212,7 @@ function Appointment() {
                 <div class="w-full px-3 sm:w-1/2">
                   <div class="mb-5">
                     <input
-                    required
+                      required
                       onChange={handleChange}
                       type="text"
                       name="city"
@@ -227,7 +225,7 @@ function Appointment() {
                 <div class="w-full px-3 sm:w-1/2">
                   <div class="mb-5">
                     <input
-                    required
+                      required
                       onChange={handleChange}
                       type="text"
                       name="state"
@@ -248,7 +246,7 @@ function Appointment() {
                   Reason
                 </label>
                 <textarea
-                required
+                  required
                   name="reason"
                   id="reason"
                   cols="30"
