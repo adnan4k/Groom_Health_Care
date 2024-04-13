@@ -34,7 +34,7 @@ function Home() {
        className=''>
       <HeroSection />
       </div>
-      <div>
+      <div id='about'>
          <AboutSection />
       </div>
       <div  data-aos="fade-up"

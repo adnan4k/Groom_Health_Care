@@ -34,7 +34,7 @@ function NavBar() {
                                     <Link to='/' className={`block py-2 px-3 rounded md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/' ? ' text-blue-700' : 'text-white'}`} aria-current="page">Home</Link>
                                 </li>
                                 <li className=''>
-                                    <Link to='/about' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/about' ? ' text-blue-700' : 'text-white'}`}>About</Link>
+                                    <a href='#about' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/about' ? ' text-blue-700' : 'text-white'}`}>About</a>
                                 </li>
                                 <li className=''>
                                     <Link to='/service' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/service' ? ' text-blue-700' : 'text-white'}`}>Services</Link>
