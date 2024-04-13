@@ -52,7 +52,7 @@ function HeroSection() {
         <div className='w-[55%] sm:ml-0 ml-5 z-50 sm:mt-10 -mt-[90%]'>
         <img src="/images/mydoctor.png" alt="doctor" className='mb-2'/>
         <div className=''>
-        <div className='flex flex-row w-full  sm:py-2 z-50 bg-white sm:bg-white shadow-xl  border-[1px] rounded-lg sm:border-[#0F8EF8]'>
+        {/* <div className='flex flex-row w-full  sm:py-2 z-50 bg-white sm:bg-white shadow-xl  border-[1px] rounded-lg sm:border-[#0F8EF8]'>
           <div className='card-container mx-4 bg-white w-full z-50 '>
             <div className='image-container flex flex-row'>
             <img src="/images/dr1.png" className='px-2 h-5' alt="doctor male" />
@@ -80,7 +80,7 @@ function HeroSection() {
                 <h3 className='ml-6'>Cardologist</h3>
             </div>
           </div>
-        </div>
+        </div> */}
         </div>
         <div>
          

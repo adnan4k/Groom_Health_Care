@@ -10,6 +10,7 @@ import 'aos/dist/aos.css';
 import { useEffect } from 'react'
 import Aos from 'aos'
 import VisionMission from '../components/VisionMission'
+import AboutSection from '../sections/AboutSection'
 
 
 function Home() {
@@ -32,7 +33,9 @@ function Home() {
        className=''>
       <HeroSection />
       </div>
-  
+      <div>
+         <AboutSection />
+      </div>
       <div  data-aos="fade-up"
        className=''>
       <VisionMission/>
@@ -51,7 +54,7 @@ function Home() {
        className=''>
       <Sertification />
       </div> */}
-      <div  data-aos="fade-up"
+      <div  data-aos="fade-do"
        id='news'>
       <News />
       </div>
