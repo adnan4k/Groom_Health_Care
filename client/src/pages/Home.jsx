@@ -9,6 +9,7 @@ import SimpleSlider from '../components/Testimony'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react'
 import Aos from 'aos'
+import VisionMission from '../components/VisionMission'
 
 
 function Home() {
@@ -32,11 +33,16 @@ function Home() {
       <HeroSection />
       </div>
   
-     
+      <div  data-aos="fade-up"
+       className=''>
+      <VisionMission/>
+      </div>
+
       <div  data-aos="fade-up"
        className=''>
       <Fact />
       </div>
+      
       <div  data-aos="fade-up"
        className=''>
         {/* <Values /> */}
