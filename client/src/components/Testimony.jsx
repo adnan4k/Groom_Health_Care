@@ -7,8 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PreviousBtn from "./PreviousBtn";
 import NextBtn from "./NextBtn";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
+// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+// import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
 
 function Testimony() {
   const [data,setData] = useState([]);
@@ -35,8 +35,9 @@ function Testimony() {
     autoplaySpeed: 6000,
     slidesToShow: 3,
     slidesToScroll: 3,
-    nextArrow: <NextBtn icon={ArrowForwardIosIcon} />,
-    prevArrow: <PreviousBtn icon={ArrowBackIos} />,
+    arrows:true,
+    // nextArrow: <NextBtn icon={ArrowForwardIosIcon} />,
+    // prevArrow: <PreviousBtn icon={ArrowBackIos} />,
     endDots: (dots) => <ul>{dots}</ul>,
     customPaging: (i) => (
       <div className="ft-slick__dots--custom">
