@@ -2,92 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function HeroSection() {
-  // -mt-[10%] -ml-[10%]  bg-gradient-to-b from-cyan-200/20 to-blue-500/10 ... rounded-full
-  const bgImage  = '/images/newEllipse.png'
-  const ellipseStyle = {
-    background: `url(${bgImage})`,
-    backgroundSize: 'cover', // Ensure the image covers the ellipse
-    backgroundPosition: 'center', // Center the background image
-    height: '600px', // Adjust based on your design needs
-    // borderRadius: '50% 70% 70% 50%', // Creates an elliptical border-radius (horizontal / vertical radius)
-    // marginRight:'-30%',
-  };
-  const bgImage1  = '/images/background.png'
-
-  const ellipseStyle1 = {
-    background: `url(${bgImage1})`,
-    backgroundSize: 'cover', // Ensure the image covers the ellipse
-    backgroundPosition: 'center', // Center the background image
-    // height: '700px',
-    };
+  
   return (
-    <div className='flex flex-col sm:flex-row bg-[#17a49d33]' >
-      <div style={ellipseStyle}  className='sm:w-full h-[10px] sm:h-[600px] sm:-ml-[10%]  '></div>
-      <div class="pt-10  z-50 sm:-mt-0 -mt-[600px] sm:-ml-[40%] ">
-       <div className='containe flex flex-col w-[80%] ml-[10%] mt-10 justify-center'>
-        <h1 className='w-1/2  text-4xl font-bold '>Serving your health needs is our priority</h1>
-        <p className='w-[80%] my-[5%] text-lg'> 
-          Groom Health Service is a leading company in the healthcare industry, offering up to
-          date support and expertise to improve healthcare access, address health issues, and
-          enhance the overall quality of medical care.
-        </p>
-
-        <div className='buttons flex flex-row'>
-          <Link to='/contact' >
-          <button className=' flex text-nowrap mr-10    sm:text-sm   bg-[#0F8EF8] text-white  rounded-xl px-5 py-2'>
-            <span><img src="/images/call.png" className='hidden sm:inline-block h-5 pr-2' alt="call" /></span>
-            CALL US
-            </button>
-            </Link>
-          {/* <div className='flex flex-grow'></div> */}
-          <Link to='/appointment' className='inline-block'>
-          <button  className='ml-[90%] px-5 bg-[#0F8EF8] text-white rounded-xl ml-20 sm:mr-0 py-2'>Appointment</button>
+    <section className="relative bg-gray-900 dark:bg-gray-900">
+      <div className="absolute inset-0 overflow-hidden">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div className="relative grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div className="mr-auto place-self-center lg:col-span-7">
+          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold text-white tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+            Serving your health needs is our priority 
+          </h1>
+          <Link to="#" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:ring-primary-900 dark:focus:ring-primary-900">
+            Call Us
+            <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+            </svg>
+          </Link>
+          <Link to="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 text-white dark:text-white dark:border-gray-700 border-gray-700 hover:bg-gray-700 focus:ring-gray-800">
+            Make Appointment
           </Link>
         </div>
-      </div>
-      </div>
-         <div className='flex flex-grow'></div>
-      {/* <div className='w-[45%]   '  style={ellipseStyle}> */}
-        <div className='sm:w-full h-[400px] sm:h-[700px] sm:-mr-[50%] mt-16  sm:mt-0' style={ellipseStyle1}></div>
-        <div className='w-[55%] sm:ml-0 ml-5 z-50 sm:mt-10 -mt-[90%]'>
-        <img src="/images/mydoctor.png" alt="doctor" className='mb-2'/>
-        <div className=''>
-        {/* <div className='flex flex-row w-full  sm:py-2 z-50 bg-white sm:bg-white shadow-xl  border-[1px] rounded-lg sm:border-[#0F8EF8]'>
-          <div className='card-container mx-4 bg-white w-full z-50 '>
-            <div className='image-container flex flex-row'>
-            <img src="/images/dr1.png" className='px-2 h-5' alt="doctor male" />
-            <h3 className=' text-black sm:text-[15px] text-sm font-semibold'>Dr John Doe</h3>
-            </div>
-            <div className='title'>
-                <h3 className='ml-6'>Cardologist</h3>
-            </div>
-          </div>
-          <div className='card-container mx-4 w-full bg-white z-50'>
-            <div className='image-container flex flex-row'>
-            <img src="/images/dr2.png" className='h-5 px-2 ' alt="doctor male" />
-            <h3 className='text-black sm:text-[15px] text-sm font-semibold'>Dr John Doe</h3>
-            </div>
-            <div className='title'>
-                <h3 className='ml-6'>Cardologist</h3>
-            </div>
-          </div>
-          <div className='card-container -mx-4 sm:mx-4  bg-white w-full'>
-            <div className='image-container flex flex-row'>
-            <img src="/images/dr3.png" className='h-5 px-2 ' alt="doctor male" />
-            <h3 className='text-black sm:text-[15px] text-sm font-semibold'>Dr John Doe</h3>
-            </div>
-            <div className='title'>
-                <h3 className='ml-6'>Cardologist</h3>
-            </div>
-          </div>
-        </div> */}
-        </div>
-        <div>
-         
+        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <img src="/images/trueDoctor.png" alt="doctor" />
         </div>
       </div>
-      {/* </div> */}
-    </div>
+    </section>
   );
 }
 

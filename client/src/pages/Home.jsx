@@ -24,20 +24,21 @@ function Home() {
 
   }, []);
   return (
-    <div  data-aos="fade-up"
+    <div  
      className='overflow-hidden'>
-      <div  data-aos="fade-up"
+      <div  
        className=''>
       <NavBar />
       </div>
-      <div  data-aos="fade-up"
+      <div  
        className=''>
       <HeroSection />
       </div>
       <div id='about'>
          <AboutSection />
       </div>
-      <div  data-aos="fade-up"
+      
+      <div  
        className=''>
       <VisionMission/>
       </div>
@@ -47,7 +48,7 @@ function Home() {
       <Fact />
       </div>
       
-      <div  data-aos="fade-up"
+      <div  
        className=''>
         {/* <Values /> */}
       </div>
@@ -58,8 +59,8 @@ function Home() {
       </div>
       <div  
        className=''>
-      <h2 className='flex my-[4%] text-3xl font-bold text-black justify-center items-center '>Testimonial</h2>
-      <SimpleSlider data-aos="fade-up" />
+      <h2 className='flex my-[4%] text-3xl font-bold text-white justify-center items-center '>Testimonial</h2>
+      <SimpleSlider  />
       </div>
       <div>
         <Subscription />

@@ -10,7 +10,7 @@ function NavBar() {
     return (
         <Layout>
             <div className=' '>
-                <nav className="bg-[#001E36] border-gray-200 dark:bg-gray-900 ">
+                <nav className="bg-[#003456] border-gray-200 dark:bg-[#003456] ">
                     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
                         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="/images/groom-logo.png" className="h-16 " alt="groom logo" />
@@ -29,7 +29,7 @@ function NavBar() {
                             </svg>
                         </button>
                         <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block text-white md:w-auto`} id="navbar-default">
-                            <ul className="font-medium flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-[#001E36] md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-[#001E36] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                            <ul className="font-medium flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-[#003456] md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-[#003456] dark:[#003456] md:dark:bg-[#003456] dark:border-gray-700">
                                 <li className=''>
                                     <Link to='/' className={`block py-2 px-3 rounded md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/' ? ' text-blue-700' : 'text-white'}`} aria-current="page">Home</Link>
                                 </li>
@@ -46,9 +46,9 @@ function NavBar() {
                                     <Link to='/contact' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/contact' ? ' text-blue-700' : 'text-white'}`}>Contact</Link>
                                 </li>
                                 <li className='z-50'>
-                                    <Link to='/login'>
-                                        <button className='bg-[#6A64F1] text-white text-sm mt-2 rounded-xl px-4 py-2 z-50 sm:-mt-2'>Sign in</button>
-                                    </Link>
+                                    <a href='#news'>
+                                        <button className='bg-[#6A64F1] text-white text-sm mt-2 rounded-xl px-4 py-2 z-50 sm:-mt-2'>Blog</button>
+                                    </a>
                                 </li>
                             </ul>
                         </div>

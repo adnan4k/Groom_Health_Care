@@ -49,6 +49,7 @@ function App() {
         <Route path="/mission-vision" element={<VisionMission/>} />
         <Route path="/subscription" element={<Subscription/>} />
         <Route path="/sub" element={<SubscriptionTable/>} />
+
       </Routes>
     </BrowserRouter>    </div>
   );

@@ -54,10 +54,7 @@ function Subscription() {
         <h3 className="mb-3 text-xl font-medium text-gray-900 dark:text-white">
           Get more updates...
         </h3>
-        <p className="mb-5 text-sm font-medium text-gray-500 dark:text-gray-300">
-          Stay up-to-date on our constantly evolving health service features and
-          cutting-edge technologies
-        </p>
+     
         <form onSubmit={handleSubmit}>
           <div data-style="clean" className="flex items-end mb-3">
             <div
@@ -102,23 +99,7 @@ function Subscription() {
             </div>
           </div>
         </form>
-        <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-          Enter your e-mail address and subscribe to our newsletter .{" "}
-          <a
-            href="/"
-            className="text-blue-600 hover:underline dark:text-blue-500"
-          >
-            Terms of Service
-          </a>{" "}
-          and
-          <a
-            className="text-blue-600 hover:underline dark:text-blue-500"
-            href="/"
-          >
-            Privacy Policy
-          </a>
-          .
-        </div>
+  
       </aside>
     </div>
   );
