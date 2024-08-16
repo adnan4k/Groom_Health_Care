@@ -10,7 +10,7 @@ function Table({ columns, initialRows, type }) {
   const handleDelete = async (id, type) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/${type}/delete-${type}/${id}`
+        `https://backend.es4h.org/${type}/delete-${type}/${id}`
       );
       console.log(response.data);
     } catch (error) {

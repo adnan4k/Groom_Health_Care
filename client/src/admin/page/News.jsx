@@ -62,11 +62,11 @@ function News() {
 
         if (!row) {
             // For creating a new service
-            const response = await axios.post('http://localhost:4000/news/create-news', formDataToSend, config);
+            const response = await axios.post('https://backend.es4h.org/news/create-news', formDataToSend, config);
             console.log("Form submission response:", response.data);
         } else {
             
-            const response = await axios.post(`http://localhost:4000/news/edit-news/${row[index].id}`, formDataToSend, config);
+            const response = await axios.post(`https://backend.es4h.org/news/edit-news/${row[index].id}`, formDataToSend, config);
             console.log("Form submission response:", response.data);
         }
 

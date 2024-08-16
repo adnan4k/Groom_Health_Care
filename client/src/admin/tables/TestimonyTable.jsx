@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const fetchData = async () => {
   // Example API call
-  const response = await axios.get('http://localhost:4000/testimony/get-testimony');
+  const response = await axios.get('https://backend.es4h.org/testimony/get-testimony');
   console.log(response.data)
   return response.data;
 };
@@ -22,7 +22,7 @@ function TestimonyTable() {
     { 
       key: 'image', 
       label: 'Image', 
-      render: (row) => <img  src={`http://localhost:4000/images/${row.image}`} alt={row.name} style={{ width: '50px' }} /> 
+      render: (row) => <img  src={`https://backend.es4h.org/images/${row.image}`} alt={row.name} style={{ width: '50px' }} /> 
     },
   ];
   const type = "testimony"

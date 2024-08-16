@@ -9,43 +9,27 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Testimony() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true); // Added loading state
+  const [error, setError] = useState(null); // Added error state
 
   useEffect(() => {
-    // Dummy data for testimonials
-    const dummyData = [
-      {
-        id: 1,
-        image: 'test1.png',
-        name: 'John Doe',
-        description: 'This is a testimonial from John Doe. He is very happy with the service.'
-      },
-      {
-        id: 2,
-        image: 'test1.png',
-        name: 'Jane Smith',
-        description: 'This is a testimonial from Jane Smith. She found the service excellent.'
-      },
-      {
-        id: 3,
-        image: 'test1.png',
-        name: 'Michael Johnson',
-        description: 'This is a testimonial from Michael Johnson. He recommends this service to everyone.'
-      },
-      {
-        id: 4,
-        image: 'test1.png',
-        name: 'Emily Davis',
-        description: 'This is a testimonial from Emily Davis. She is very satisfied with the results.'
-      },
-      {
-        id: 5,
-        image: 'test1.png',
-        name: 'David Brown',
-        description: 'This is a testimonial from David Brown. He appreciates the quality of the service.'
-      },
-    ];
+    // Fetch data from the API
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://backend.es4h.org/testimony/get-testimony');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setData(result); // Assuming the API returns an array of testimonials
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    setData(dummyData);
+    fetchData();
   }, []);
 
   const settings = {
@@ -103,10 +87,10 @@ function Testimony() {
               <div className="bg-white p-5 rounded-lg shadow-lg">
                 <div className="flex flex-row">
                   <img
-                    src={`/images/${item.image}`}
+                    src={`https://backend.es4h.org/images/${item.image}`}
                     alt={item.name}
                     className="mx-auto w-32 rounded-full"
-                  />
+                  />©
                   <h2 className="text-center text-xl font-semibold mt-[20%] -ml-[10%]">
                     {item.name}
                   </h2>

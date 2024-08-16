@@ -2,10 +2,37 @@ import React from 'react';
 
 const ContactForm = () => {
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Implement form submission logic here
+  
+    const formData = new FormData(e.target);
+    
+    // Convert formData to JSON
+    const data = Object.fromEntries(formData.entries());
+  
+    try {
+      const response = await fetch('https://backend.es4h.org/user/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        // Handle successful submission
+        alert('Message sent successfully!');
+        e.target.reset(); // Reset the form after successful submission
+      } else {
+        // Handle errors
+        alert('Failed to send the message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
+  
 
   return (
     <section className="text-gray-600 body-font relative">
@@ -97,7 +124,7 @@ const ContactForm = () => {
               type="submit"
               className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
             >
-              Button
+            Send
             </button>
 
           </div>
