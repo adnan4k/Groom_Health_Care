@@ -30,8 +30,8 @@ function FactItem({ number, image, description }) {
     <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
       <div className="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110 text-center">
         <img src={image} alt={description} className="w-12 h-12 mb-3 inline-block" />
-        <h2 className="title-font font-medium text-3xl text-white">{animatedNumber}</h2>
-        <p className="leading-relaxed">{description}</p>
+        <h2 className="title-font font-medium text-3xl text-gray-500">{animatedNumber}</h2>
+        <p className="leading-relaxed text-indigo-600">{description}</p>
       </div>
     </div>
   );
@@ -40,15 +40,15 @@ function FactItem({ number, image, description }) {
 function Fact() {
   const facts = [
     { id: 1, number: '1200', image: '/images/mdi_patient.png', description: 'Patients' },
-    { id: 2, number: '20', image: '/images/healthicons_doctor-male.png', description: 'Doctors' },
-    { id: 3, number: '10', image: '/images/female-doctor.png', description: 'Nurses' },
+    { id: 2, number: '60', image: '/images/healthicons_doctor-male.png', description: 'Doctors' },
+    { id: 3, number: '90', image: '/images/female-doctor.png', description: 'Nurses' },
     { id: 4, number: '200', image: '/images/free_man.png', description: 'Trainers' },
   ];
 
   return (
-    <section className="text-gray-700 dark:bg-gray-700 body-font bg-gray-900 dark:bg-gray-900">
+    <section className="text-gray-700 dark:bg-gray-700 body-font bg-white dark:bg-gray-900">
       <div className="container px-5 py-14 mx-auto">
-      <h1 className='text-center font-bold text-4xl text-white mb-10'>Facts</h1>
+      <h1 className='text-center font-bold text-4xl text-indigo-600 mb-10'>Facts</h1>
 
         <div className="flex flex-wrap -m-4 text-center">
           {facts.map(fact => (

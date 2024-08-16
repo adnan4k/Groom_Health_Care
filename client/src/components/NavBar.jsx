@@ -34,7 +34,7 @@ function NavBar() {
                                     <Link to='/' className={`block py-2 px-3 rounded md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/' ? ' text-blue-700' : 'text-white'}`} aria-current="page">Home</Link>
                                 </li>
                                 <li className=''>
-                                    <a href='#about' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/about' ? ' text-blue-700' : 'text-white'}`}>About</a>
+                                    <Link to='/about' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/about' ? ' text-blue-700' : 'text-white'}`}>About</Link>
                                 </li>
                                 <li className=''>
                                     <Link to='/service' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/service' ? ' text-blue-700' : 'text-white'}`}>Services</Link>
@@ -46,9 +46,9 @@ function NavBar() {
                                     <Link to='/contact' className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:text-blue-500 dark:hover:bg-gray-700 ${location.pathname === '/contact' ? ' text-blue-700' : 'text-white'}`}>Contact</Link>
                                 </li>
                                 <li className='z-50'>
-                                    <a href='#news'>
+                                    <Link to='/news' >
                                         <button className='bg-[#6A64F1] text-white text-sm mt-2 rounded-xl px-4 py-2 z-50 sm:-mt-2'>Blog</button>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

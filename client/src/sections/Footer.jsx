@@ -57,11 +57,11 @@ function Footer() {
       {/* Copyright */}
       <div className="col-span-1 sm:col-span-3 text-center mt-6 sm:mt-0">
         <span className="text-sm text-gray-500 font-semibold dark:text-gray-400">
-          © 2023{" "}
+          © 2024 {" "}
           <a href="https://kasmasolution/" className="hover:underline">
-            Kasma Tech Solution™
+            Developed By Kasma Software Solutions
           </a>
-          . All Rights Reserved.
+              . Groom Health Service. All rights reserved
         </span>
       </div>
     </footer>

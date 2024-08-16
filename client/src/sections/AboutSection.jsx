@@ -15,9 +15,8 @@ function AboutSection() {
             About <span className="text-indigo-600">Groom Health Care</span>
           </h2>
           <p className="text-gray-700">
-          Groom Health Service is a leading company in the healthcare industry, 
-          offering up to date support and expertise to improve healthcare access,
-           address health issues, and enhance the overall quality of medical care..
+            Groom Health service a Private limited company with proven
+             experience of providing expertise solutions for every aspect of health and wellness...
           </p>
         </div>
       </div>

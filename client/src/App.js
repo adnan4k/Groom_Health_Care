@@ -20,6 +20,7 @@ import ContactPage from "./pages/ContactPage";
 import VisionMission from "./components/VisionMission";
 import Subscription from "./sections/Subscription";
 import SubscriptionTable from "./admin/tables/SubscriptionTable";
+import NewsAndArticles from "./components/NewsAndArticles";
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
         <Route path="/admin/service" element={<Service />} />
         <Route path="/admin/staff" element={<Staff />} />
         <Route path="/admin/news" element={<News />} />
+        <Route path="/news" element={<NewsAndArticles />} />
+
         <Route path="/admin/testimony" element={<Testimony />} />
         <Route path="/admin/news/display" element={<NewsTables/>} />
         <Route path="/admin/staff/display" element={<StaffTable/>} />

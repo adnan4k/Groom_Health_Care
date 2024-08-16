@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar'
 import HeroSection from '../sections/HeroSection'
 import Fact from '../sections/Fact'
 import Sertification from '../sections/Sertification'
-import News from '../components/News'
+import News from '../components/NewsAndArticles'
 import Footer from '../sections/Footer'
 import SimpleSlider from '../components/Testimony'
 import 'aos/dist/aos.css';
@@ -59,7 +59,7 @@ function Home() {
       </div>
       <div  
        className=''>
-      <h2 className='flex my-[4%] text-3xl font-bold text-white justify-center items-center '>Testimonial</h2>
+      <h2 className='flex my-[4%] text-3xl font-bold text-indigo-600 justify-center items-center '>Client Testimonies</h2>
       <SimpleSlider  />
       </div>
       <div>

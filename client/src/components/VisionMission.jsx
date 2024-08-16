@@ -1,18 +1,18 @@
 import React from 'react';
 
 const ContentCard = ({ title, description, icon, bgColor }) => (
-  <div className="max-w-[450px] m-10 rounded-xl bg-white p-6 text-center shadow-xl">
+  <div className="max-w-[450px] m-10 rounded-xl bg-gray-100 p-6 text-center shadow-xl">
     <div className={`mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full shadow-lg ${bgColor} shadow-${bgColor}/40`}>
       {icon}
     </div>
-    <h1 className="text-darken mb-3 text-xl font-medium lg:px-14">{title}</h1>
-    <p className="px-4 text-gray-500">{description}</p>
+    <h1 className="text-white-200 mb-3 text-xl font-medium lg:px-14">{title}</h1>
+    <p className="px-4 text-white-200">{description}</p>
   </div>
 );
 
 const VisionMission = () => {
   return (
-    <div className="h-screen flex flex-row items-center justify-center bg-gray-800 p-4">
+    <div className=" -mt-5 flex flex-row items-center justify-center bg-white p-4">
       <div className="flex md:flex-row flex-col">
         <ContentCard 
           title="Vision" 
